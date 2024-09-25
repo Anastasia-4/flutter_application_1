@@ -13,6 +13,10 @@ class Dimensions {
   static double buttonWidthContainer = screenWidth/2.07;
   static double buttonHeight = screenHeight/11.43;
   static double margin32Width = screenWidth/80;
+  static double margin27Height = screenHeight/59.26;
+  static double margin27Width = screenWidth/94.82;
+  static double margin138Height = screenHeight/11.59;
+  
 
 
   static double cornerRadius20 = screenHeight/80;
@@ -20,5 +24,6 @@ class Dimensions {
 
 
   static double font37 = screenHeight/43.24;
+  static double font35 = screenHeight/45.71;
   
 }

@@ -22,6 +22,7 @@ class AppColors{
   static final Color blueButtonColor = const Color(0xFF295FF1);
   static final Color redButtonColor = const Color(0xFFA90000);
   static final Color blackButtonColor = const Color(0xFF020C1C);
+  static final Color whiteButtonColor = const Color(0xFFFFFFFF);
   
   
 }
