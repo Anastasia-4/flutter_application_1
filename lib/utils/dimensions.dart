@@ -15,8 +15,17 @@ class Dimensions {
   static double margin32Width = screenWidth/80;
   static double margin27Height = screenHeight/59.26;
   static double margin37Height = screenHeight/43.24;
+  static double margin11Height = screenHeight/145.46;
   static double margin27Width = screenWidth/94.82;
+  static double margin10Width = screenWidth/256;
   static double margin138Height = screenHeight/11.59;
+  static double margin95Height = screenHeight/16.84;
+  static double margin197Height = screenHeight/8.12;
+  static double margin63Height = screenHeight/25.4;
+  static double border1 = screenHeight/1600;
+
+  static double settingsBtnWidth = screenWidth/9.14;
+  static double settingsBtnHeight = screenHeight/22.86;
   
 
 
@@ -25,10 +34,26 @@ class Dimensions {
   static double cornerRadius15 = screenHeight/106.67;
 
 
+  static double font10 = screenHeight/160;
   static double font37 = screenHeight/43.24;
   static double font35 = screenHeight/45.71;
 
   static double gameGroupHeight = screenHeight/2.56;
   static double gameGroupWidth = screenWidth/1.27;
+
+
+  static double sectionNameHeight = screenHeight/24.62;
+  static double sectionNameWidth = screenWidth/7.62;
+  static double sectionMainHeight = screenHeight/3.23;
+  static double sectionMainWidth = screenWidth/1.26;
+  static double sectionMoreWidth = screenWidth/10.49;
+  static double sectionMoreMargin = screenWidth/1.46;
+
+
+  static double devicesListWidth = screenWidth/6.4;
+  static double devicesListHeight = screenWidth/7.88;
+
+
+
   
 }

@@ -53,7 +53,7 @@ class _TimerState extends State<Timer> {
                           color: AppColors.yellowButtonColor,
                         ),
                         alignment: Alignment.center,
-                        child: EditedText(color: AppColors.blackText, text: "Пауза", size: Dimensions.font35, fontWeight: FontWeight.w700),
+                        child: EditedText(color: AppColors.blackText, text: "Пауза", size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
                         ),
                       ),
                       Expanded(
@@ -65,7 +65,7 @@ class _TimerState extends State<Timer> {
                           color: AppColors.yellowButtonColor,
                         ),
                         alignment: Alignment.center,
-                        child: EditedText(color: AppColors.blackText, text: "Стоп", size: Dimensions.font35, fontWeight: FontWeight.w700),
+                        child: EditedText(color: AppColors.blackText, text: "Стоп", size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
                         ),
                       ),
                       Expanded(
@@ -77,7 +77,7 @@ class _TimerState extends State<Timer> {
                           color: AppColors.yellowButtonColor,
                         ),
                         alignment: Alignment.center,
-                        child: EditedText(color: AppColors.blackText, text: "Трансляция", size: Dimensions.font35, fontWeight: FontWeight.w700),
+                        child: EditedText(color: AppColors.blackText, text: "Трансляция", size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
                         ),
                       ),
                       Expanded(
@@ -89,7 +89,7 @@ class _TimerState extends State<Timer> {
                           color: AppColors.yellowButtonColor,
                         ),
                         alignment: Alignment.center,
-                        child: EditedText(color: AppColors.blackText, text: "Граница", size: Dimensions.font35, fontWeight: FontWeight.w700),
+                        child: EditedText(color: AppColors.blackText, text: "Граница", size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
                         ),
                       )
                     ],

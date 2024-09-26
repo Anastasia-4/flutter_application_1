@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/home/devices_list.dart';
 import 'package:flutter_application_1/home/game_page.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
@@ -31,10 +33,33 @@ class _MainPageState extends State<MainPage> {
                 child: Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: Dimensions.margin138Height),
-                      child: EditedText(color: AppColors.lighterGreyText, text: "УСТРОЙСТВА", size: Dimensions.font37, fontWeight: FontWeight.w900,),
-                    )
-                  //Добавляются через __ новые устройства
+                      margin: EdgeInsets.only(top: Dimensions.margin138Height, bottom: Dimensions.margin95Height),
+                      child: EditedText(color: AppColors.lighterGreyText, text: "УСТРОЙСТВА", size: Dimensions.font10*3.7, fontWeight: FontWeight.w900,),
+                    ),
+                      Expanded(child: DevicesList()),
+                    Container(
+                      margin: EdgeInsets.only(top: Dimensions.margin197Height, bottom: Dimensions.margin63Height),
+                      child: Container(
+                      padding: EdgeInsets.only(left: Dimensions.margin10Width, right: Dimensions.margin10Width),
+                        width: Dimensions.settingsBtnWidth,
+                        height: Dimensions.settingsBtnHeight,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(Dimensions.cornerRadius15),
+                          color: AppColors.darkBgColor
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Icon(
+                              CupertinoIcons.gear,
+                              color: AppColors.greyText,
+                              size: Dimensions.font10*4.2,
+                            ),
+                            EditedText(color: AppColors.greyText, text: "Настройки", size: Dimensions.font10*3.2, fontWeight: FontWeight.w400, ),
+                          ],
+                        ),
+                      )
+                    ),
                   ]
                 ),
               ),
