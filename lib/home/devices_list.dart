@@ -17,13 +17,43 @@ class _DevicesListState extends State<DevicesList> {
               Expanded(
                 child: SingleChildScrollView(
                   child: 
-              ListView.builder(
+              Column(
+                children: [
+                  ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: 5,
               itemBuilder: (BuildContext context, int index){
                 return getDevice(index);
               },
+              ),
+              Container(
+                height: Dimensions.margin10Height*16.5,
+                width: Dimensions.devicesListWidth,
+                margin: EdgeInsets.only(left: Dimensions.margin10Width*2, right: Dimensions.margin10Width*2, bottom: Dimensions.margin10Height*5.9),
+                padding: EdgeInsets.only(left: Dimensions.margin10Width*1.5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
+                  color: AppColors.darkBgColor
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  EditedText(color: AppColors.greyText, text: 'Не активировано', size: Dimensions.font10*3.5, fontWeight: FontWeight.w500),
+                  Container(
+                    alignment: Alignment.center,
+                    height: Dimensions.margin10Height*5.7,
+                    width: Dimensions.margin10Width*20,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimensions.cornerRadius20/2),
+                      color: AppColors.yellowButtonColor
+                  ),
+                  child: EditedText(color: AppColors.blackText, text: 'Активировать', size: Dimensions.font10*2.5, fontWeight: FontWeight.w500),
+                  )
+                ],
+              )
+              )
+                ],
               ),
               )
               );          
