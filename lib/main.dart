@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Database/db_helper.dart';
 import 'package:flutter_application_1/home/main_page.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]).then((value){
+  SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]).then((value) async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await DatabaseHelper.instance.initDb();
+  await DatabaseHelper.instance.initializeUsers();
+
   runApp(const MyApp());
   });
 }

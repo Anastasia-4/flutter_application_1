@@ -3,6 +3,7 @@ import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
 import 'package:flutter_application_1/widgets/edited_text.dart';
 
+
 class DevicesList extends StatefulWidget {
   const DevicesList({super.key});
 
@@ -10,7 +11,12 @@ class DevicesList extends StatefulWidget {
   State<DevicesList> createState() => _DevicesListState();
 }
 
+
+
 class _DevicesListState extends State<DevicesList> {
+
+
+
   @override
   Widget build(BuildContext context) {
     return  
@@ -147,3 +153,4 @@ Widget getDevice(int index){
     )
   );
 }
+
