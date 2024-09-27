@@ -33,10 +33,87 @@ class _DevicesListState extends State<DevicesList> {
 
 Widget getDevice(int index){
   return Container(
-    width: Dimensions.devicesListWidth,
     height: Dimensions.devicesListHeight,
-    margin: EdgeInsets.all(5),
-    color: AppColors.darkBgColor,
-    child: EditedText(color: AppColors.greyText, text: 'Устройство $index', size: Dimensions.font10*3.5, fontWeight: FontWeight.w500),
+    margin: EdgeInsets.only(left: Dimensions.margin10Width*2, right: Dimensions.margin10Width*2, bottom: Dimensions.margin10Height*5.9),
+    padding: EdgeInsets.only(left: Dimensions.margin10Width*1.5),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
+      color: AppColors.darkBgColor,
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              alignment: Alignment.centerLeft,
+              width: Dimensions.margin10Width*25,
+              height: Dimensions.margin10Height*8.2,
+              decoration: BoxDecoration(
+                border: Border(bottom: BorderSide(color: AppColors.whiteButtonColor))
+              ),
+              child: EditedText(color: AppColors.greyText, text: 'Устройство $index', size: Dimensions.font10*3.5, fontWeight: FontWeight.w500),
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              width: Dimensions.margin10Width*25,
+              height: Dimensions.margin10Height*8.2,
+              child: EditedText(color: AppColors.greyText, text: '00:00', size: Dimensions.font10*7, fontWeight: FontWeight.w900),
+            ),
+          ]
+        ),
+        Container(
+          width: Dimensions.margin10Width*8.3,
+          child: RotatedBox(
+          quarterTurns: 3,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Transform.flip(
+                                flipX: true,
+                                child: Image.asset(
+                                height: Dimensions.margin10Width*4.7,
+                                width: Dimensions.margin10Height*2.9,
+                              'assets/image/controller.png',
+                              fit: BoxFit.fill,
+                              ),
+                              ),
+                            EditedText(color: AppColors.greyText, text: '100', size: Dimensions.font10*2.5, fontWeight: FontWeight.w700),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Image.asset(
+                                height: Dimensions.margin10Width*3.8,
+                                width: Dimensions.margin10Height*5.6,
+                              'assets/image/VRheadset.png',
+                              fit: BoxFit.contain,
+                              ),
+                            EditedText(color: AppColors.greyText, text: '100', size: Dimensions.font10*2.5, fontWeight: FontWeight.w700),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                               Image.asset(
+                                height: Dimensions.margin10Width*4.7,
+                                width: Dimensions.margin10Height*2.9,
+                              'assets/image/controller.png',
+                              fit: BoxFit.fill,
+                              ),
+                            EditedText(color: AppColors.greyText, text: '100', size: Dimensions.font10*2.5, fontWeight: FontWeight.w700),
+                            ],
+                          ),
+                        ],
+          ),
+          ),
+        )
+      ],
+    )
   );
 }

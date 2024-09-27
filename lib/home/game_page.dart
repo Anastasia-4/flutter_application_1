@@ -39,15 +39,15 @@ class _GamePageState extends State<GamePage> {
 Widget getItem(int index){
   return Container(
     alignment: Alignment.center,
-    margin: EdgeInsets.only(bottom: Dimensions.margin11Height),
+    margin: EdgeInsets.only(bottom: Dimensions.margin10Height*1.1),
     child: Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
     Container(
       //Название раздела
       alignment: Alignment.centerLeft,
-      padding: EdgeInsets.only(left: Dimensions.margin27Width),
-      margin: EdgeInsets.only(left: Dimensions.margin32Width),
+      padding: EdgeInsets.only(left: Dimensions.margin10Width*2.7),
+      margin: EdgeInsets.only(left: Dimensions.margin10Width*3.2),
       width: Dimensions.sectionNameWidth,
       height: Dimensions.sectionNameHeight,
       decoration: BoxDecoration(

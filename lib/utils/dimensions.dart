@@ -12,16 +12,10 @@ class Dimensions {
   static double timeHeightContainer = screenHeight/7.88;
   static double buttonWidthContainer = screenWidth/2.07;
   static double buttonHeight = screenHeight/11.43;
-  static double margin32Width = screenWidth/80;
-  static double margin27Height = screenHeight/59.26;
-  static double margin37Height = screenHeight/43.24;
-  static double margin11Height = screenHeight/145.46;
-  static double margin27Width = screenWidth/94.82;
+
   static double margin10Width = screenWidth/256;
-  static double margin138Height = screenHeight/11.59;
-  static double margin95Height = screenHeight/16.84;
-  static double margin197Height = screenHeight/8.12;
-  static double margin63Height = screenHeight/25.4;
+  static double margin10Height = screenHeight/160;
+
   static double border1 = screenHeight/1600;
 
   static double settingsBtnWidth = screenWidth/9.14;
@@ -51,7 +45,7 @@ class Dimensions {
 
 
   static double devicesListWidth = screenWidth/6.4;
-  static double devicesListHeight = screenWidth/7.88;
+  static double devicesListHeight = screenHeight/7.88;
 
 
 

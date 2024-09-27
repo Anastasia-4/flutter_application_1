@@ -14,7 +14,7 @@ class _TimerState extends State<Timer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-                  margin: EdgeInsets.only(bottom: Dimensions.margin37Height),
+                  margin: EdgeInsets.only(bottom: Dimensions.margin10Height*3.7),
                   width: Dimensions.mainWidthContainer,
                   height: Dimensions.timerHeightContainer,
                   decoration: BoxDecoration(
@@ -46,7 +46,7 @@ class _TimerState extends State<Timer> {
                     children: [
                       Expanded(
                         child: Container(
-                          margin: EdgeInsets.only(left: Dimensions.margin32Width),
+                          margin: EdgeInsets.only(left: Dimensions.margin10Width*3.2),
                           height: Dimensions.buttonHeight,
                           decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
@@ -58,7 +58,7 @@ class _TimerState extends State<Timer> {
                       ),
                       Expanded(
                         child: Container(
-                          margin: EdgeInsets.only(left: Dimensions.margin32Width),
+                          margin: EdgeInsets.only(left: Dimensions.margin10Width*3.2),
                           height: Dimensions.buttonHeight,
                           decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
@@ -70,7 +70,7 @@ class _TimerState extends State<Timer> {
                       ),
                       Expanded(
                         child: Container(
-                          margin: EdgeInsets.only(left: Dimensions.margin32Width),
+                          margin: EdgeInsets.only(left: Dimensions.margin10Width*3.2),
                           height: Dimensions.buttonHeight,
                           decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
@@ -82,7 +82,7 @@ class _TimerState extends State<Timer> {
                       ),
                       Expanded(
                         child: Container(
-                          margin: EdgeInsets.only(left: Dimensions.margin32Width, right: Dimensions.margin32Width),
+                          margin: EdgeInsets.only(left: Dimensions.margin10Width*3.2, right: Dimensions.margin10Width*3.2),
                           height: Dimensions.buttonHeight,
                           decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),

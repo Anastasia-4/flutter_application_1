@@ -18,7 +18,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        minimum: EdgeInsets.only(left: Dimensions.margin27Width, right: Dimensions.margin27Width, top: Dimensions.margin27Height, bottom: Dimensions.margin27Height),
+        minimum: EdgeInsets.only(left: Dimensions.margin10Width*2.7, right: Dimensions.margin10Width*2.7, top: Dimensions.margin10Height*2.7, bottom: Dimensions.margin10Height*2.7),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -33,12 +33,12 @@ class _MainPageState extends State<MainPage> {
                 child: Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: Dimensions.margin138Height, bottom: Dimensions.margin95Height),
+                      margin: EdgeInsets.only(top: Dimensions.margin10Height*13.8, bottom: Dimensions.margin10Height*9.5),
                       child: EditedText(color: AppColors.lighterGreyText, text: "УСТРОЙСТВА", size: Dimensions.font10*3.7, fontWeight: FontWeight.w900,),
                     ),
                       Expanded(child: DevicesList()),
                     Container(
-                      margin: EdgeInsets.only(top: Dimensions.margin197Height, bottom: Dimensions.margin63Height),
+                      margin: EdgeInsets.only(top: Dimensions.margin10Height*19.7, bottom: Dimensions.margin10Height*6.3),
                       child: Container(
                       padding: EdgeInsets.only(left: Dimensions.margin10Width, right: Dimensions.margin10Width),
                         width: Dimensions.settingsBtnWidth,
