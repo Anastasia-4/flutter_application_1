@@ -34,7 +34,7 @@ class _MainPageState extends State<MainPage> {
                   children: [
                     Container(
                       margin: EdgeInsets.only(top: Dimensions.margin10Height*13.8, bottom: Dimensions.margin10Height*9.5),
-                      child: EditedText(color: AppColors.lighterGreyText, text: "УСТРОЙСТВА", size: Dimensions.font10*3.7, fontWeight: FontWeight.w900,),
+                      child: EditedText(color: AppColors.greyText, text: "УСТРОЙСТВА", size: Dimensions.font10*3.7, fontWeight: FontWeight.w900,),
                     ),
                       Expanded(child: DevicesList()),
                     Container(

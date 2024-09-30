@@ -1,17 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_application_1/home/Games.dart';
-import 'package:flutter_application_1/home/Home.dart';
 import 'package:flutter_application_1/home/timer.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
 import 'package:flutter_application_1/widgets/edited_text.dart';
-import 'dart:io';
-import 'package:flutter_application_1/Database/utility.dart';
-import 'package:flutter_application_1/Database/db_helper.dart';
-import 'package:flutter_application_1/Database/model.dart';
-import 'dart:async';
-
 class GamePage extends StatefulWidget {
   const GamePage({super.key});
 
