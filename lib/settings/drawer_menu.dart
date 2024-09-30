@@ -8,13 +8,15 @@ class DrawerMenu extends StatelessWidget {
   final VoidCallback onTap;
   final String title;
   final String icon;
+  final double size;
   final isSelected;
   const DrawerMenu({
     super.key,
     required this.onTap,
     required this.title, 
     required this.icon, 
-    this.isSelected = false});
+    this.isSelected = false,
+    required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +32,11 @@ class DrawerMenu extends StatelessWidget {
       fontWeight: isSelected
       ? FontWeight.w900
       : FontWeight.w500),
-      leading: SelectedIcon(size: Dimensions.margin10Width*6.1, image: icon, isSelected: isSelected),    
+      leading: SelectedIcon(size: size, image: icon, isSelected: isSelected),    
       selected: isSelected,
-      splashColor: AppColors.blueButtonColor,
+      splashColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      visualDensity: VisualDensity.adaptivePlatformDensity,
       selectedColor: AppColors.greyText,
       selectedTileColor: AppColors.darkBgColor,
       contentPadding: EdgeInsets.only(left: Dimensions.border1*2),

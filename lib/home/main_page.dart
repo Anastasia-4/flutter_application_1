@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home/devices_list.dart';
 import 'package:flutter_application_1/home/game_page.dart';
+import 'package:flutter_application_1/settings/settings_main.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
 import 'package:flutter_application_1/widgets/edited_text.dart';
@@ -37,29 +38,39 @@ class _MainPageState extends State<MainPage> {
                       child: EditedText(color: AppColors.greyText, text: "УСТРОЙСТВА", size: Dimensions.font10*3.7, fontWeight: FontWeight.w900,),
                     ),
                       Expanded(child: DevicesList()),
-                    Container(
-                      margin: EdgeInsets.only(top: Dimensions.margin10Height*19.7, bottom: Dimensions.margin10Height*6.3),
+                    GestureDetector(
                       child: Container(
-                      padding: EdgeInsets.only(left: Dimensions.margin10Width, right: Dimensions.margin10Width),
-                        width: Dimensions.settingsBtnWidth,
-                        height: Dimensions.settingsBtnHeight,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(Dimensions.cornerRadius15),
-                          color: AppColors.darkBgColor
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Icon(
-                              CupertinoIcons.gear,
-                              color: AppColors.greyText,
-                              size: Dimensions.font10*4.2,
-                            ),
-                            EditedText(color: AppColors.greyText, text: "Настройки", size: Dimensions.font10*3.2, fontWeight: FontWeight.w400, ),
-                          ],
-                        ),
-                      )
-                    ),
+                        margin: EdgeInsets.only(top: Dimensions.margin10Height*19.7, bottom: Dimensions.margin10Height*6.3),
+                        child: Container(
+                        padding: EdgeInsets.only(left: Dimensions.margin10Width, right: Dimensions.margin10Width),
+                          width: Dimensions.settingsBtnWidth,
+                          height: Dimensions.settingsBtnHeight,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(Dimensions.cornerRadius15),
+                            color: AppColors.darkBgColor
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Icon(
+                                CupertinoIcons.gear,
+                                color: AppColors.greyText,
+                                size: Dimensions.font10*4.2,
+                              ),
+                              EditedText(color: AppColors.greyText, text: "Настройки", size: Dimensions.font10*3.2, fontWeight: FontWeight.w400, ),
+                            ],
+                          ),
+                        )
+                        
+                      ),
+                      onTap: () {
+                       Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SettingsMain()),
+                      );
+                      }
+                      ),
+                    
                   ]
                 ),
               ),

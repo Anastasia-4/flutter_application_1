@@ -14,33 +14,36 @@ class SettingsMain extends StatefulWidget {
 class _SettingsMainState extends State<SettingsMain> {
   @override
   Widget build(BuildContext context) {
-  final drawerProvider = Provider.of<DrawerProvider>(context, listen: false);
+    final drawerProvider = Provider.of<DrawerProvider>(context, listen: false);
 
     return Scaffold(
       //backgroundColor: AppColors.darkBgColor,
       drawer: AppDrawer(drawerProvider: drawerProvider),
       body: SafeArea(
-        minimum: EdgeInsets.only(left: Dimensions.margin10Width*2.7, right: Dimensions.margin10Width*2.7, top: Dimensions.margin10Height*2.7, bottom: Dimensions.margin10Height*2.7),
+          minimum: EdgeInsets.only(
+              left: Dimensions.margin10Width * 2.7,
+              right: Dimensions.margin10Width * 2.7,
+              top: Dimensions.margin10Height * 2.7,
+              bottom: Dimensions.margin10Height * 2.7),
           child: Row(
-        children: [
-          AppDrawer(drawerProvider: drawerProvider),
-               Column(
-                crossAxisAlignment:  CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                      child: Consumer<DrawerProvider>(
-                        builder: (context, value, child) =>
-                            value.pages[value.selectedPageIndex],
-                      ),
-                    
-                  ),
+            children: [
+              AppDrawer(drawerProvider: drawerProvider),
+              Container(
+                child: Column(
+                  children: [
+                    Expanded(
+                      //child: SingleChildScrollView(
+                        child: Consumer<DrawerProvider>(
+                          builder: (context, value, child) =>
+                              value.pages[value.selectedPageIndex],
+                        ),
+                      //),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          
-        ],
-      )),
+              ),
+            ],
+          )),
     );
   }
 }
