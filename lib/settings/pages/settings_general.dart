@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_application_1/settings/sharedPreferencesHelper.dart';
 import 'package:flutter_application_1/theme/theme_provider.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
@@ -16,22 +17,6 @@ class SettingsGeneral extends StatefulWidget {
 
 
 class _SettingsGeneralState extends State<SettingsGeneral> {
-
-  @override
-  void initState() {
-    super.initState();
-    getSavedData();
-  }
-
-    getSavedData() async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool Theme = prefs.getBool("Theme") ?? true;
-
-    }
-
-  //Future<bool> getTheme() async {
-    //return prefs.getBool("Theme") ?? true;
-  //}
   bool Check15 = false;
   bool Check30 = true;
   bool Check45 = true;
@@ -39,7 +24,13 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
   bool LaunchDemo = false;
   bool ShowGames = false;
   bool Theme = true;
+  @override
 
+  void initState() {
+    super.initState();
+    Theme = SharedPreferencesHelper.getBool("Theme") ?? true;
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -178,7 +169,10 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                           children: [
                             GestureDetector(child: EditedCheck(text: 'Темная', isChecked: Theme),onTap: () async {
                               setState(
-                                () => Theme = true,
+                                () {
+                                  Theme = true;
+                                  SharedPreferencesHelper.setBool("Theme", true);
+                                },
                               );
                               Provider.of<ThemeProvider>(context, listen: false).toggleTheme(Theme);
                               
@@ -187,7 +181,10 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                             SizedBox(width: Dimensions.margin10Width*7.5),
                             GestureDetector(child: EditedCheck(text: 'Светлая', isChecked: !Theme),onTap: () async {
                               setState(
-                                () => Theme = false,
+                                () {
+                                  Theme = false;
+                                  SharedPreferencesHelper.setBool("Theme", false);
+                                },
                               );
                               Provider.of<ThemeProvider>(context, listen: false).toggleTheme(Theme);
                               

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Database/db_helper.dart';
 import 'package:flutter_application_1/home/main_page.dart';
 import 'package:flutter_application_1/provider/drawerProvider.dart';
+import 'package:flutter_application_1/settings/sharedPreferencesHelper.dart';
 import 'package:flutter_application_1/theme/theme_provider.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
@@ -10,7 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await SharedPreferencesHelper.init();
   SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]).then((value) async {
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +24,7 @@ void main() async {
         create: (_) =>DrawerProvider(),
       ),
       ChangeNotifierProvider(
-        create: (BuildContext context) =>ThemeProvider(isDark: prefs.getBool("Theme") ?? true),
+        create: (BuildContext context) =>ThemeProvider(isDark: SharedPreferencesHelper.getBool("Theme") ?? true),
       ),
     ],
   child: const MyApp()));
