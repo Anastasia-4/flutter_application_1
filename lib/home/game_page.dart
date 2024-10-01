@@ -15,8 +15,11 @@ class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
         children: [
-              Timer(),
+              Container(
+                alignment: Alignment.centerRight,
+                child: Timer()),
               Expanded(
                 child: SingleChildScrollView(
                   child: 
@@ -37,7 +40,7 @@ class _GamePageState extends State<GamePage> {
 
 Widget getItem(int index){
   return Container(
-    alignment: Alignment.center,
+    alignment: Alignment.centerRight,
     margin: EdgeInsets.only(bottom: Dimensions.margin10Height*1.1),
     child: Column(
     crossAxisAlignment: CrossAxisAlignment.start,

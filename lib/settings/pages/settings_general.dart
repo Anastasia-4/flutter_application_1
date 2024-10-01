@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_application_1/theme/theme_provider.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
 import 'package:flutter_application_1/widgets/edited_check.dart';
 import 'package:flutter_application_1/widgets/edited_text.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsGeneral extends StatefulWidget {
   const SettingsGeneral({super.key});
@@ -12,7 +14,24 @@ class SettingsGeneral extends StatefulWidget {
   State<SettingsGeneral> createState() => _SettingsGeneralState();
 }
 
+
 class _SettingsGeneralState extends State<SettingsGeneral> {
+
+  @override
+  void initState() {
+    super.initState();
+    getSavedData();
+  }
+
+    getSavedData() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool Theme = prefs.getBool("Theme") ?? true;
+
+    }
+
+  //Future<bool> getTheme() async {
+    //return prefs.getBool("Theme") ?? true;
+  //}
   bool Check15 = false;
   bool Check30 = true;
   bool Check45 = true;
@@ -157,16 +176,21 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                       Container(
                         child: Row(
                           children: [
-                            GestureDetector(child: EditedCheck(text: 'Темная', isChecked: Theme),onTap: () {
+                            GestureDetector(child: EditedCheck(text: 'Темная', isChecked: Theme),onTap: () async {
                               setState(
                                 () => Theme = true,
                               );
+                              Provider.of<ThemeProvider>(context, listen: false).toggleTheme(Theme);
+                              
+
                             },),
                             SizedBox(width: Dimensions.margin10Width*7.5),
-                            GestureDetector(child: EditedCheck(text: 'Светлая', isChecked: !Theme),onTap: () {
+                            GestureDetector(child: EditedCheck(text: 'Светлая', isChecked: !Theme),onTap: () async {
                               setState(
                                 () => Theme = false,
                               );
+                              Provider.of<ThemeProvider>(context, listen: false).toggleTheme(Theme);
+                              
                             },),
                           ],
                         ),
@@ -180,4 +204,6 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
       ],
     );
   }
+
+
 }

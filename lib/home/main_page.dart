@@ -6,6 +6,7 @@ import 'package:flutter_application_1/settings/settings_main.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
 import 'package:flutter_application_1/widgets/edited_text.dart';
+import 'package:get/get.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -29,7 +30,7 @@ class _MainPageState extends State<MainPage> {
                 height: Dimensions.devicesHeightContainer,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
-                  color: AppColors.darkMainColor,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
                 child: Column(
                   children: [
@@ -64,10 +65,7 @@ class _MainPageState extends State<MainPage> {
                         
                       ),
                       onTap: () {
-                       Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const SettingsMain()),
-                      );
+                       Get.to(() => SettingsMain(), transition: Transition.fadeIn);
                       }
                       ),
                     
