@@ -28,19 +28,13 @@ class _SettingsMainState extends State<SettingsMain> {
           child: Row(
             children: [
               AppDrawer(drawerProvider: drawerProvider),
-              Container(
-                child: Column(
-                  children: [
-                    Expanded(
-                      //child: SingleChildScrollView(
-                        child: Consumer<DrawerProvider>(
-                          builder: (context, value, child) =>
-                              value.pages[value.selectedPageIndex],
-                        ),
-                      //),
-                    ),
-                  ],
-                ),
+              Expanded(
+                //child: SingleChildScrollView(
+                  child: Consumer<DrawerProvider>(
+                    builder: (context, value, child) =>
+                        value.pages[value.selectedPageIndex],
+                  ),
+                //),
               ),
             ],
           )),

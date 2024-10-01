@@ -7,6 +7,7 @@ import 'package:flutter_application_1/widgets/selected_icon.dart';
 class DrawerMenu extends StatelessWidget {
   final VoidCallback onTap;
   final String title;
+  final String selectedTitle;
   final String icon;
   final double size;
   final isSelected;
@@ -16,7 +17,8 @@ class DrawerMenu extends StatelessWidget {
     required this.title, 
     required this.icon, 
     this.isSelected = false,
-    required this.size});
+    required this.size,
+    required this.selectedTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,9 @@ class DrawerMenu extends StatelessWidget {
       title: EditedText(color: isSelected
       ? AppColors.greyText
       : AppColors.whiteText, 
-      text: title, 
+      text: isSelected
+      ? selectedTitle
+      : title, 
       size: isSelected
       ? Dimensions.font10*3.3
       : Dimensions.font10*3, 

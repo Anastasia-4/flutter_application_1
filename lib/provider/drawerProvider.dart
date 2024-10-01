@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/settings/account.dart';
+import 'package:flutter_application_1/settings/pages/account.dart';
+import 'package:flutter_application_1/settings/pages/pay.dart';
+import 'package:flutter_application_1/settings/pages/settings_general.dart';
 
 class DrawerProvider extends ChangeNotifier{
 
@@ -13,8 +15,8 @@ class DrawerProvider extends ChangeNotifier{
     const SettingsPage(),*/
 
     const Account(),
-    const Account(),
-    const Account(),
+    const Pay(),
+    const SettingsGeneral(),
     const Account(),
     const Account(),
 

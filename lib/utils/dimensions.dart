@@ -42,6 +42,7 @@ class Dimensions {
   static double sectionMainWidth = screenWidth/1.26;
   static double sectionMoreWidth = screenWidth/10.49;
   static double sectionMoreMargin = screenWidth/1.46;
+  static double sectionTimeMargin = screenWidth/3.696;
 
 
   static double devicesListWidth = screenWidth/6.4;

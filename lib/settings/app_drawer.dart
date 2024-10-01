@@ -41,6 +41,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 DrawerMenu(
                   isSelected: widget.drawerProvider.selectedPageIndex == 0,
                   title: "Личный кабинет",
+                  selectedTitle: "Личный кабинет",
                   icon: 'assets/image/account.png',
                   size: Dimensions.margin10Width*6.1,
                   onTap: () {
@@ -49,7 +50,8 @@ class _AppDrawerState extends State<AppDrawer> {
                 ),
                 DrawerMenu(
                   isSelected: widget.drawerProvider.selectedPageIndex == 1,
-                  title: "Тарифы и платежи ",
+                  title: "Тарифы и платежи",
+                  selectedTitle: "Тарифный план",
                   icon: 'assets/image/wallet.png',
                   size: Dimensions.margin10Width*5.8,
                   onTap: () {
@@ -58,7 +60,8 @@ class _AppDrawerState extends State<AppDrawer> {
                 ),
                 DrawerMenu(
                   isSelected: widget.drawerProvider.selectedPageIndex == 2,
-                  title: "Общие настройки ",
+                  title: "Общие настройки",
+                  selectedTitle: "Общие настройки",
                   icon: 'assets/image/gear.png',
                   size: Dimensions.margin10Width*6.1,
                   onTap: () {
@@ -68,6 +71,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 DrawerMenu(
                   isSelected: widget.drawerProvider.selectedPageIndex == 3,
                   title: "Устройства",
+                  selectedTitle: "Устройства",
                   icon: 'assets/image/headset.png',
                   size: Dimensions.margin10Width*6.1,
                   onTap: () {
@@ -77,6 +81,7 @@ class _AppDrawerState extends State<AppDrawer> {
                  DrawerMenu(
                     isSelected: widget.drawerProvider.selectedPageIndex == 4,
                     title: "Категории",
+                    selectedTitle: "Категории",
                     icon: 'assets/image/category.png',
                     size: Dimensions.margin10Width*6.1,
                     onTap: () {
