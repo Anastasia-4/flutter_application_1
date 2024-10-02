@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Database/db_helper.dart';
 import 'package:flutter_application_1/home/main_page.dart';
 import 'package:flutter_application_1/provider/drawerProvider.dart';
+import 'package:flutter_application_1/settings/settings_main.dart';
 import 'package:flutter_application_1/settings/sharedPreferencesHelper.dart';
 import 'package:flutter_application_1/theme/theme_provider.dart';
 import 'package:flutter_application_1/utils/colors.dart';

@@ -30,7 +30,8 @@ class _AppDrawerState extends State<AppDrawer> {
         ),
         width: Dimensions.devicesWidthContainer,
         backgroundColor: Theme.of(context).colorScheme.primary,
-          //child: SingleChildScrollView(
+          child: SingleChildScrollView(
+            physics: NeverScrollableScrollPhysics(),
             child: 
             Column(
               children: [
@@ -38,7 +39,7 @@ class _AppDrawerState extends State<AppDrawer> {
                       margin: EdgeInsets.only(top: Dimensions.margin10Height*13.8, bottom: Dimensions.margin10Height*9.5),
                       child: EditedText(color: Theme.of(context).colorScheme.tertiary, text: "НАСТРОЙКИ", size: Dimensions.font10*3.7, fontWeight: FontWeight.w900,),
                     ),
-
+            
                 DrawerMenu(
                   isSelected: widget.drawerProvider.selectedPageIndex == 0,
                   title: "Личный кабинет",
@@ -120,7 +121,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 ),
               ],
             ),
-         // ),
+          ),
       );
     });
   }

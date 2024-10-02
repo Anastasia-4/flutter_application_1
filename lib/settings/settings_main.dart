@@ -17,6 +17,7 @@ class _SettingsMainState extends State<SettingsMain> {
     final drawerProvider = Provider.of<DrawerProvider>(context, listen: false);
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       //backgroundColor: AppColors.darkBgColor,
       drawer: AppDrawer(drawerProvider: drawerProvider),
       body: SafeArea(
