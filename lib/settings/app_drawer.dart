@@ -25,17 +25,18 @@ class _AppDrawerState extends State<AppDrawer> {
     return Consumer<DrawerProvider>(builder: (context, value, child) {
       return Drawer(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Dimensions.cornerRadius20)
+          borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
+          side: BorderSide(color: Theme.of(context).colorScheme.tertiaryFixed, width: Dimensions.border1)
         ),
         width: Dimensions.devicesWidthContainer,
-        backgroundColor: AppColors.darkMainColor,
+        backgroundColor: Theme.of(context).colorScheme.primary,
           //child: SingleChildScrollView(
             child: 
             Column(
               children: [
                 Container(
                       margin: EdgeInsets.only(top: Dimensions.margin10Height*13.8, bottom: Dimensions.margin10Height*9.5),
-                      child: EditedText(color: AppColors.greyText, text: "НАСТРОЙКИ", size: Dimensions.font10*3.7, fontWeight: FontWeight.w900,),
+                      child: EditedText(color: Theme.of(context).colorScheme.tertiary, text: "НАСТРОЙКИ", size: Dimensions.font10*3.7, fontWeight: FontWeight.w900,),
                     ),
 
                 DrawerMenu(

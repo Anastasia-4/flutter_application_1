@@ -4,6 +4,7 @@ import 'package:flutter_application_1/home/main_page.dart';
 import 'package:flutter_application_1/provider/drawerProvider.dart';
 import 'package:flutter_application_1/settings/sharedPreferencesHelper.dart';
 import 'package:flutter_application_1/theme/theme_provider.dart';
+import 'package:flutter_application_1/utils/colors.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +19,9 @@ void main() async {
   await DatabaseHelper.instance.initDb();
   await DatabaseHelper.instance.initializeUsers();
 
-  runApp(MultiProvider(
+
+  runApp(
+    MultiProvider(
     providers: [
       ChangeNotifierProvider(
         create: (_) =>DrawerProvider(),
@@ -37,7 +40,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,

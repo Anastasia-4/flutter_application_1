@@ -5,7 +5,13 @@ ThemeData darkMode = ThemeData(
   brightness: Brightness.dark,
   colorScheme: ColorScheme.dark(
     surface: AppColors.darkBgColor,
-    primary: AppColors.darkMainColor
+    primary: AppColors.darkMainColor,
+    primaryFixed: AppColors.darkMainColor,
+    primaryContainer: AppColors.darkBgColor,
+    tertiary: AppColors.greyText,
+    tertiaryContainer: AppColors.whiteText,
+    tertiaryFixed: Colors.transparent,
+    primaryFixedDim: AppColors.darkBgColor
   )
 );
 
@@ -13,6 +19,12 @@ ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: ColorScheme.light(
     surface: AppColors.lightBgColor,
-    primary: AppColors.lightMainColor
+    primary: AppColors.lightMainColor,
+    primaryFixed: AppColors.lightContainerColor,
+    primaryContainer: AppColors.lightContainerColor,
+    tertiary: AppColors.blackText,
+    tertiaryContainer: AppColors.blackText,
+    tertiaryFixed: AppColors.greyText,
+    primaryFixedDim: AppColors.yellowButtonColor
   )
 );

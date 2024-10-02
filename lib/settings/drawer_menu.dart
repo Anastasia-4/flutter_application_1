@@ -25,8 +25,8 @@ class DrawerMenu extends StatelessWidget {
     return ListTile(
       onTap: onTap,
       title: EditedText(color: isSelected
-      ? AppColors.greyText
-      : AppColors.whiteText, 
+      ? Theme.of(context).colorScheme.tertiary
+      : Theme.of(context).colorScheme.tertiaryContainer, 
       text: isSelected
       ? selectedTitle
       : title, 
@@ -41,9 +41,11 @@ class DrawerMenu extends StatelessWidget {
       splashColor: Colors.transparent,
       focusColor: Colors.transparent,
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      selectedColor: AppColors.greyText,
-      selectedTileColor: AppColors.darkBgColor,
+      selectedTileColor: Theme.of(context).colorScheme.primaryFixedDim,
       contentPadding: EdgeInsets.only(left: Dimensions.border1*2),
+      shape: Border(left: BorderSide(color: isSelected
+      ? AppColors.blueButtonColor
+      : Theme.of(context).colorScheme.primary, width: Dimensions.border1*12,)),
     );
   }
 }

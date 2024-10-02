@@ -15,7 +15,8 @@ class Account extends StatelessWidget {
           height: Dimensions.margin10Height*81,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
-              color: AppColors.darkMainColor
+              border: Border.all(color: Theme.of(context).colorScheme.tertiaryFixed, width: Dimensions.border1),
+              color: Theme.of(context).colorScheme.primary
               ),
         ),
         Expanded(child: SizedBox.shrink()),
@@ -24,7 +25,8 @@ class Account extends StatelessWidget {
           height: Dimensions.margin10Height*66,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
-              color: AppColors.darkMainColor
+              border: Border.all(color: Theme.of(context).colorScheme.tertiaryFixed, width: Dimensions.border1),
+              color: Theme.of(context).colorScheme.primary
               ),
         ),
       ],

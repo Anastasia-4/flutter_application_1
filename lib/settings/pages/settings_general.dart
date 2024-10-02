@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_application_1/settings/sharedPreferencesHelper.dart';
 import 'package:flutter_application_1/theme/theme_provider.dart';
 import 'package:flutter_application_1/utils/colors.dart';
@@ -6,7 +6,6 @@ import 'package:flutter_application_1/utils/dimensions.dart';
 import 'package:flutter_application_1/widgets/edited_check.dart';
 import 'package:flutter_application_1/widgets/edited_text.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsGeneral extends StatefulWidget {
   const SettingsGeneral({super.key});
@@ -23,12 +22,12 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
   bool Check60 = true;
   bool LaunchDemo = false;
   bool ShowGames = false;
-  bool Theme = true;
+  bool _Theme = true;
   @override
 
   void initState() {
     super.initState();
-    Theme = SharedPreferencesHelper.getBool("Theme") ?? true;
+    _Theme = SharedPreferencesHelper.getBool("Theme") ?? true;
   }
   
   @override
@@ -42,12 +41,13 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
             padding: EdgeInsets.symmetric(horizontal: Dimensions.margin10Width*8.4),
             decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
-                  color: AppColors.darkMainColor
+                  border: Border.all(color: Theme.of(context).colorScheme.tertiaryFixed, width: Dimensions.border1),
+                  color: Theme.of(context).colorScheme.primary
                   ),
             child: Column(
               children: [
                 SizedBox(height: Dimensions.margin10Height*13.5),
-                EditedText(color: AppColors.greyText, text: 'Общие настройки', size: Dimensions.font10*4.5, fontWeight: FontWeight.w700),
+                EditedText(color:Theme.of(context).colorScheme.tertiary, text: 'Общие настройки', size: Dimensions.font10*4.5, fontWeight: FontWeight.w700),
                 SizedBox(height: Dimensions.margin10Height*10),
                 Container(
                   height: Dimensions.margin10Height*20,
@@ -59,7 +59,7 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                     children: [
                       Container(
                         width: Dimensions.sectionTimeMargin,
-                        child: EditedText(color: AppColors.whiteText, text: 'Таймер по умолчанию:', size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
+                        child: EditedText(color: Theme.of(context).colorScheme.tertiary, text: 'Таймер по умолчанию:', size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
                       ),
                       Container(
                         child: Row(
@@ -100,7 +100,7 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                     children: [
                       Container(
                         width: Dimensions.sectionTimeMargin,
-                        child: EditedText(color: AppColors.whiteText, text: 'Запуск демо игры:', size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
+                        child: EditedText(color: Theme.of(context).colorScheme.tertiary, text: 'Запуск демо игры:', size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
                       ),
                       Container(
                         child: Row(
@@ -124,14 +124,14 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                 Container(
                   height: Dimensions.margin10Height*20,
                   decoration: BoxDecoration(
-                        border: Border(bottom: BorderSide(color: AppColors.greyText, width: Dimensions.border1))
+                        border: Border(bottom: BorderSide(color: Theme.of(context).colorScheme.tertiary, width: Dimensions.border1))
                       ),
                   child: Row(
                     mainAxisAlignment:  MainAxisAlignment.start,
                     children: [
                       Container(
                         width: Dimensions.sectionTimeMargin,
-                        child: EditedText(color: AppColors.whiteText, text: 'Отображать игры в устройстве:', size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
+                        child: EditedText(color: Theme.of(context).colorScheme.tertiary, text: 'Отображать игры в устройстве:', size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
                       ),
                       Container(
                         child: Row(
@@ -155,38 +155,38 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                 Container(
                   height: Dimensions.margin10Height*20,
                   decoration: BoxDecoration(
-                        border: Border(bottom: BorderSide(color: AppColors.greyText, width: Dimensions.border1))
+                        border: Border(bottom: BorderSide(color: Theme.of(context).colorScheme.tertiary, width: Dimensions.border1))
                       ),
                   child: Row(
                     mainAxisAlignment:  MainAxisAlignment.start,
                     children: [
                       Container(
                         width: Dimensions.sectionTimeMargin,
-                        child: EditedText(color: AppColors.whiteText, text: 'Тема приложения:', size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
+                        child: EditedText(color: Theme.of(context).colorScheme.tertiary, text: 'Тема приложения:', size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
                       ),
                       Container(
                         child: Row(
                           children: [
-                            GestureDetector(child: EditedCheck(text: 'Темная', isChecked: Theme),onTap: () async {
+                            GestureDetector(child: EditedCheck(text: 'Темная', isChecked: _Theme),onTap: () async {
                               setState(
                                 () {
-                                  Theme = true;
+                                  _Theme = true;
                                   SharedPreferencesHelper.setBool("Theme", true);
                                 },
                               );
-                              Provider.of<ThemeProvider>(context, listen: false).toggleTheme(Theme);
+                              Provider.of<ThemeProvider>(context, listen: false).toggleTheme(_Theme);
                               
 
                             },),
                             SizedBox(width: Dimensions.margin10Width*7.5),
-                            GestureDetector(child: EditedCheck(text: 'Светлая', isChecked: !Theme),onTap: () async {
+                            GestureDetector(child: EditedCheck(text: 'Светлая', isChecked: !_Theme),onTap: () async {
                               setState(
                                 () {
-                                  Theme = false;
+                                  _Theme = false;
                                   SharedPreferencesHelper.setBool("Theme", false);
                                 },
                               );
-                              Provider.of<ThemeProvider>(context, listen: false).toggleTheme(Theme);
+                              Provider.of<ThemeProvider>(context, listen: false).toggleTheme(_Theme);
                               
                             },),
                           ],

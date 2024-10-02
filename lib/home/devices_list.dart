@@ -40,12 +40,12 @@ class _DevicesListState extends State<DevicesList> {
                 padding: EdgeInsets.only(left: Dimensions.margin10Width*1.5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
-                  color: AppColors.darkBgColor
+                  color: Theme.of(context).colorScheme.primaryContainer
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  EditedText(color: AppColors.greyText, text: 'Не активировано', size: Dimensions.font10*3.5, fontWeight: FontWeight.w500),
+                  EditedText(color: Theme.of(context).colorScheme.tertiary, text: 'Не активировано', size: Dimensions.font10*3.5, fontWeight: FontWeight.w500),
                   Container(
                     alignment: Alignment.center,
                     height: Dimensions.margin10Height*5.7,
@@ -65,8 +65,6 @@ class _DevicesListState extends State<DevicesList> {
               );          
 
   }
-}
-
 Widget getDevice(int index){
   return Container(
     height: Dimensions.devicesListHeight,
@@ -74,7 +72,7 @@ Widget getDevice(int index){
     padding: EdgeInsets.only(left: Dimensions.margin10Width*1.5),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
-      color: AppColors.darkBgColor,
+      color: Theme.of(context).colorScheme.primaryContainer,
     ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -87,15 +85,15 @@ Widget getDevice(int index){
               width: Dimensions.margin10Width*25,
               height: Dimensions.margin10Height*8.2,
               decoration: BoxDecoration(
-                border: Border(bottom: BorderSide(color: AppColors.whiteButtonColor))
+                border: Border(bottom: BorderSide(color: AppColors.darkerGreyText))
               ),
-              child: EditedText(color: AppColors.greyText, text: 'Устройство $index', size: Dimensions.font10*3.5, fontWeight: FontWeight.w500),
+              child: EditedText(color: Theme.of(context).colorScheme.tertiary, text: 'Устройство $index', size: Dimensions.font10*3.5, fontWeight: FontWeight.w500),
             ),
             Container(
               alignment: Alignment.centerLeft,
               width: Dimensions.margin10Width*25,
               height: Dimensions.margin10Height*8.2,
-              child: EditedText(color: AppColors.greyText, text: '00:00', size: Dimensions.font10*7, fontWeight: FontWeight.w900),
+              child: EditedText(color: Theme.of(context).colorScheme.tertiary, text: '00:00', size: Dimensions.font10*7, fontWeight: FontWeight.w900),
             ),
           ]
         ),
@@ -118,7 +116,7 @@ Widget getDevice(int index){
                               fit: BoxFit.fill,
                               ),
                               ),
-                            EditedText(color: AppColors.greyText, text: '100', size: Dimensions.font10*2.5, fontWeight: FontWeight.w700),
+                            EditedText(color: Theme.of(context).colorScheme.tertiary, text: '100', size: Dimensions.font10*2.5, fontWeight: FontWeight.w700),
                             ],
                           ),
                           Column(
@@ -130,7 +128,7 @@ Widget getDevice(int index){
                               'assets/image/VRheadset.png',
                               fit: BoxFit.contain,
                               ),
-                            EditedText(color: AppColors.greyText, text: '100', size: Dimensions.font10*2.5, fontWeight: FontWeight.w700),
+                            EditedText(color: Theme.of(context).colorScheme.tertiary, text: '100', size: Dimensions.font10*2.5, fontWeight: FontWeight.w700),
                             ],
                           ),
                           Column(
@@ -142,7 +140,7 @@ Widget getDevice(int index){
                               'assets/image/controller.png',
                               fit: BoxFit.fill,
                               ),
-                            EditedText(color: AppColors.greyText, text: '100', size: Dimensions.font10*2.5, fontWeight: FontWeight.w700),
+                            EditedText(color: Theme.of(context).colorScheme.tertiary, text: '100', size: Dimensions.font10*2.5, fontWeight: FontWeight.w700),
                             ],
                           ),
                         ],
@@ -153,4 +151,6 @@ Widget getDevice(int index){
     )
   );
 }
+}
+
 

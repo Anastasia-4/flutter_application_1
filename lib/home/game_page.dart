@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home/timer.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
 import 'package:flutter_application_1/widgets/edited_text.dart';
+import 'package:flutter_application_1/theme/theme_provider.dart';
+import 'package:provider/provider.dart';
+
+
 class GamePage extends StatefulWidget {
   const GamePage({super.key});
 
@@ -36,7 +41,6 @@ class _GamePageState extends State<GamePage> {
             ]
             );
   }
-}
 
 Widget getItem(int index){
   return Container(
@@ -54,10 +58,10 @@ Widget getItem(int index){
       height: Dimensions.sectionNameHeight,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(topRight: Radius.circular(Dimensions.cornerRadius25), topLeft: Radius.circular(Dimensions.cornerRadius25)),
-        color: AppColors.darkMainColor
+        color: Theme.of(context).colorScheme.primaryFixed
       ),
       
-      child: EditedText(color: AppColors.greyText, text: "Раздел $index", size: Dimensions.font10*4, fontWeight: FontWeight.w700, ),
+      child: EditedText(color: Theme.of(context).colorScheme.tertiary, text: "Раздел $index", size: Dimensions.font10*4, fontWeight: FontWeight.w700, ),
     ),
     Container(
       //Содержимое
@@ -66,8 +70,7 @@ Widget getItem(int index){
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Dimensions.cornerRadius15),
         border: Border.all(color: AppColors.greyText, width: Dimensions.border1),
-        color: AppColors.darkMainColor
-        
+        color: Theme.of(context).colorScheme.primary
       ),
       //child: Games(),
     ),
@@ -78,15 +81,15 @@ Widget getItem(int index){
       height: Dimensions.sectionNameHeight,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(bottomRight: Radius.circular(Dimensions.cornerRadius25), bottomLeft: Radius.circular(Dimensions.cornerRadius25)),
-        color: AppColors.darkMainColor
+        color: Theme.of(context).colorScheme.primary
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          EditedText(color: AppColors.greyText, text: "Развернуть", size: Dimensions.font10*3, fontWeight: FontWeight.w400, ),
+          EditedText(color: Theme.of(context).colorScheme.tertiary, text: "Развернуть", size: Dimensions.font10*3, fontWeight: FontWeight.w400, ),
           Icon(
             CupertinoIcons.chevron_down,
-            color: AppColors.greyText,
+            color: Theme.of(context).colorScheme.tertiary,
             size: Dimensions.font10*4,
           )
         ],
@@ -95,4 +98,5 @@ Widget getItem(int index){
   ],
     ),
   );
+}
 }

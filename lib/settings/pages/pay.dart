@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
 
@@ -20,7 +21,8 @@ class _PayState extends State<Pay> {
             width: Dimensions.mainWidthContainer,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
-                color: AppColors.darkMainColor),
+                border: Border.all(color: Theme.of(context).colorScheme.tertiaryFixed, width: Dimensions.border1, strokeAlign: BorderSide.strokeAlignOutside),
+                color: Theme.of(context).colorScheme.primary),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -32,17 +34,17 @@ class _PayState extends State<Pay> {
                         width: Dimensions.margin10Width * 85,
                         height: Dimensions.margin10Height * 98.5,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                Dimensions.cornerRadius20),
-                            color: AppColors.darkBgColor),
+                            borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
+                            border: Border.all(color: AppColors.greyText, width: Dimensions.border1),
+                            color: Theme.of(context).colorScheme.primaryContainer),
                       ),
                       Container(
                         width: Dimensions.margin10Width * 85,
                         height: Dimensions.margin10Height * 98.5,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                Dimensions.cornerRadius20),
-                            color: AppColors.darkBgColor),
+                            borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
+                            border: Border.all(color: AppColors.greyText, width: Dimensions.border1),
+                            color: Theme.of(context).colorScheme.primaryContainer),
                       )
                     ],
                   ),
@@ -51,9 +53,9 @@ class _PayState extends State<Pay> {
                         width: Dimensions.margin10Width * 162.1,
                         height: Dimensions.margin10Height * 98.5,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                Dimensions.cornerRadius20),
-                            color: AppColors.darkBgColor),
+                            borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
+                            border: Border.all(color: AppColors.greyText, width: Dimensions.border1),
+                            color: Theme.of(context).colorScheme.primaryContainer),
                       ),
                   SizedBox(height: Dimensions.margin10Height*9),
                 ],

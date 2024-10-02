@@ -30,13 +30,14 @@ class _MainPageState extends State<MainPage> {
                 height: Dimensions.devicesHeightContainer,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
+                  border: Border.all(color: Theme.of(context).colorScheme.tertiaryFixed, width: Dimensions.border1),
                   color: Theme.of(context).colorScheme.primary,
                 ),
                 child: Column(
                   children: [
                     Container(
                       margin: EdgeInsets.only(top: Dimensions.margin10Height*13.8, bottom: Dimensions.margin10Height*9.5),
-                      child: EditedText(color: AppColors.greyText, text: "УСТРОЙСТВА", size: Dimensions.font10*3.7, fontWeight: FontWeight.w900,),
+                      child: EditedText(color: Theme.of(context).colorScheme.tertiary, text: "УСТРОЙСТВА", size: Dimensions.font10*3.7, fontWeight: FontWeight.w900,),
                     ),
                       Expanded(child: DevicesList()),
                     GestureDetector(
@@ -48,17 +49,17 @@ class _MainPageState extends State<MainPage> {
                           height: Dimensions.settingsBtnHeight,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(Dimensions.cornerRadius15),
-                            color: AppColors.darkBgColor
+                            color: Theme.of(context).colorScheme.primaryContainer
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Icon(
                                 CupertinoIcons.gear,
-                                color: AppColors.greyText,
+                                color: Theme.of(context).colorScheme.tertiary,
                                 size: Dimensions.font10*4.2,
                               ),
-                              EditedText(color: AppColors.greyText, text: "Настройки", size: Dimensions.font10*3.2, fontWeight: FontWeight.w400, ),
+                              EditedText(color: Theme.of(context).colorScheme.tertiary, text: "Настройки", size: Dimensions.font10*3.2, fontWeight: FontWeight.w400, ),
                             ],
                           ),
                         )

@@ -7,13 +7,14 @@ class AppColors{
   //light mode
   static final Color lightMainColor = const Color(0xFFF7F7F6);
   static final Color lightBgColor = const Color(0xFFFFFFFF);
+  static final Color lightContainerColor = const Color(0xFFE1E1E0);
 
   
   //text
   static final Color whiteText = const Color(0xFFFFFFFF);
   static final Color blackText = const Color(0xFF000000);
   static final Color greyText = const Color(0xFF959595);
-  static final Color lighterGreyText = const Color(0xFFA7A7A7);
+  static final Color darkerGreyText = const Color(0xFF4B5463);
   static final Color greenText = const Color(0xFF0B8222);
 
 

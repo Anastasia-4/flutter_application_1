@@ -19,7 +19,8 @@ class _TimerState extends State<Timer> {
                   height: Dimensions.timerHeightContainer,
                   decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.cornerRadius25),
-                  color: AppColors.darkMainColor,
+                  border: Border.all(color: Theme.of(context).colorScheme.tertiaryFixed, width: Dimensions.border1),
+                  color: Theme.of(context).colorScheme.primary,
               ),
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -30,7 +31,7 @@ class _TimerState extends State<Timer> {
                     height: Dimensions.timeHeightContainer,
                     decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
-                    color: AppColors.darkBgColor,
+                    color: Theme.of(context).colorScheme.primaryContainer,
                   ),   
               
                   ),
@@ -40,7 +41,7 @@ class _TimerState extends State<Timer> {
                     height: Dimensions.timeHeightContainer,
                     decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
-                    color: AppColors.darkBgColor,
+                    color: Theme.of(context).colorScheme.primaryContainer,
                   ),
                   child: Row(
                     children: [

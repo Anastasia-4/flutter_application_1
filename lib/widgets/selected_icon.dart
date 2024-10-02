@@ -15,15 +15,12 @@ class SelectedIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          left: BorderSide(color: isSelected
-      ? AppColors.blueButtonColor
-      : AppColors.darkMainColor, width: Dimensions.border1*12)
-        )
-      ),
       padding: EdgeInsets.only(left: Dimensions.margin10Width*2.3),
-      child: Image.asset(image, width: size, fit: BoxFit.contain,),
+      child: Image.asset(image, width: size, fit: BoxFit.contain,
+      color: isSelected
+      ? Theme.of(context).colorScheme.tertiary
+      : AppColors.greyText
+      ),
     );
   }
 }

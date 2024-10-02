@@ -38,7 +38,7 @@ class _EditedCheckState extends State<EditedCheck> {
         ),
             ),
           SizedBox(width: Dimensions.margin10Width*2),
-          EditedText(color: AppColors.greyText, text: widget.text, size: Dimensions.font10*5, fontWeight: FontWeight.w900)
+          EditedText(color: Theme.of(context).colorScheme.tertiary, text: widget.text, size: Dimensions.font10*5, fontWeight: FontWeight.w900)
        ],
       ),
     );
