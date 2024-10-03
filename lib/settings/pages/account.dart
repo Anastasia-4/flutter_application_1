@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
+import 'package:flutter_application_1/widgets/edited_text.dart';
 import 'package:flutter_application_1/widgets/edited_textfield.dart';
-class Account extends StatelessWidget {
+class Account extends StatefulWidget {
   const Account({super.key});
 
+  @override
+  State<Account> createState() => _AccountState();
+}
+
+class _AccountState extends State<Account> {
+    bool notEdited = true;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,7 +38,9 @@ class Account extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
+                          SizedBox(height: Dimensions.margin10Height/2),
                           Container(
                             width: Dimensions.margin10Width * 43.8,
                             height: Dimensions.margin10Height * 37.8,
@@ -42,10 +51,41 @@ class Account extends StatelessWidget {
                                   color: AppColors.darkerGreyText,
                                   width: Dimensions.border1),
                             ),
+                          ),
+                          SizedBox(height: Dimensions.margin10Height/10),
+                          GestureDetector(
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: Dimensions.margin10Width*33.2,
+                              height: Dimensions.settingsBtnHeight,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
+                                color: AppColors.yellowButtonColor
+                              ),
+                              child: EditedText(color: AppColors.blackText, text: 'Редактировать', size: Dimensions.font10*3, fontWeight: FontWeight.w500),
+                            ),
+                            onTap: () => setState(() {
+                              notEdited = false;
+                            }),
+                          ),
+                          GestureDetector(
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: Dimensions.margin10Width*33.2,
+                              height: Dimensions.settingsBtnHeight,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
+                                color: AppColors.yellowButtonColor
+                              ),
+                              child: EditedText(color: AppColors.blackText, text: 'Сохранить', size: Dimensions.font10*3, fontWeight: FontWeight.w500),
+                            ),
+                            onTap: () => setState(() {
+                              notEdited = true;
+                            }),
                           )
                         ],
                       ),
-                      EditedTextfield(),
+                      EditedTextfield(notEdited: notEdited),
                     ],
                   ),
                 ),
@@ -67,34 +107,5 @@ class Account extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  String? validateName(String? value) {
-    const pattern = r'^[а-яА-Я]+\ [а-яА-Я]+\ [а-яА-Я]+';
-    final regex = RegExp(pattern);
-
-    return value!.isNotEmpty && !regex.hasMatch(value) ? 'false' : null;
-  }
-
-  String? validateEmail(String? value) {
-    const pattern = r'^[\w-\.]+@[a-zA-Z]+\.[a-zA-Z]{2,}$';
-    final regex = RegExp(pattern);
-
-    return value!.isNotEmpty && !regex.hasMatch(value) ? 'false' : null;
-  }
-
-  String? validateNumber(String? value) {
-    const pattern = r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$';
-    final regex = RegExp(pattern);
-
-    return value!.isNotEmpty && !regex.hasMatch(value) ? 'false' : null;
-  }
-
-  String? validateId(String? value) {
-    const pattern = r'^[@][a-z1-9_]+$';
-    final regex = RegExp(pattern);
-
-    return value!.isNotEmpty && !regex.hasMatch(value) ? 'false' : null;
-  }
-  
+  } 
 }

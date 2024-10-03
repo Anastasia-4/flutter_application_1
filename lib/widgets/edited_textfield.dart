@@ -8,8 +8,11 @@ import 'package:flutter_application_1/widgets/edited_text.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class EditedTextfield extends StatefulWidget {
-  const EditedTextfield({super.key});
-
+  dynamic notEdited;
+  EditedTextfield({
+    super.key,
+    required this.notEdited
+    });
   @override
   State<EditedTextfield> createState() => _EditedTextfieldState();
 }
@@ -96,7 +99,7 @@ class _EditedTextfieldState extends State<EditedTextfield> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             EditedText(
-                color: AppColors.greyText,
+                color: Theme.of(context).colorScheme.tertiary,
                 text: "ФИО",
                 size: Dimensions.font10 * 3.5,
                 fontWeight: FontWeight.w700),
@@ -104,6 +107,7 @@ class _EditedTextfieldState extends State<EditedTextfield> {
               width: Dimensions.margin10Width * 131.6,
               height: Dimensions.margin10Height * 10.8,
               child: TextFormField(
+                readOnly: widget.notEdited,
                 initialValue: SharedPreferencesHelper.getString('name') ?? '',
                 onChanged: (validString) =>
                     onNameChanged(validString),
@@ -111,8 +115,11 @@ class _EditedTextfieldState extends State<EditedTextfield> {
                   LengthLimitingTextInputFormatter(55),
                 ],
                 keyboardType: TextInputType.name,
+                style: TextStyle(color: Theme.of(context).colorScheme.tertiaryContainer, fontSize: Dimensions.font10*3.5, fontFamily: 'Roboto', fontWeight: FontWeight.w500),
                 decoration: InputDecoration(
-                  suffixIcon: Icon(
+                  suffixIcon: widget.notEdited
+                  ? null
+                  :Icon(
                     _isNameValid
                     ? Icons.check_circle_outline
                     : Icons.error_outline,
@@ -121,7 +128,7 @@ class _EditedTextfieldState extends State<EditedTextfield> {
                     : AppColors.redButtonColor,
                   ),
                   filled: true,
-                  fillColor: AppColors.darkBgColor,
+                  fillColor: Theme.of(context).colorScheme.primaryContainer,
                   border: OutlineInputBorder(
                       borderRadius:
                           BorderRadius.circular(Dimensions.cornerRadius15),
@@ -149,7 +156,7 @@ class _EditedTextfieldState extends State<EditedTextfield> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             EditedText(
-                color: AppColors.greyText,
+                color: Theme.of(context).colorScheme.tertiary,
                 text: "Email",
                 size: Dimensions.font10 * 3.5,
                 fontWeight: FontWeight.w700),
@@ -157,6 +164,7 @@ class _EditedTextfieldState extends State<EditedTextfield> {
               width: Dimensions.margin10Width * 131.6,
               height: Dimensions.margin10Height * 10.8,
               child: TextFormField(
+                readOnly: widget.notEdited,
                 initialValue: SharedPreferencesHelper.getString('email') ?? '',
                 onChanged: (valid_String) =>
                     onEmailChanged(valid_String),
@@ -164,17 +172,20 @@ class _EditedTextfieldState extends State<EditedTextfield> {
                   LengthLimitingTextInputFormatter(55),
                 ],
                 keyboardType: TextInputType.emailAddress,
+                style: TextStyle(color: Theme.of(context).colorScheme.tertiaryContainer, fontSize: Dimensions.font10*3.5, fontFamily: 'Roboto', fontWeight: FontWeight.w500),
                 decoration: InputDecoration(
-                  suffixIcon: Icon(
-                  _isEmailValid
-                  ? Icons.check_circle_outline
-                  : Icons.error_outline,
-                  color: _isEmailValid
-                  ? AppColors.greenText
-                  : AppColors.redButtonColor,
-                ),
+                  suffixIcon: widget.notEdited
+                  ? null
+                  :Icon(
+                    _isNameValid
+                    ? Icons.check_circle_outline
+                    : Icons.error_outline,
+                    color: _isNameValid
+                    ? AppColors.greenText
+                    : AppColors.redButtonColor,
+                  ),
                   filled: true,
-                  fillColor: AppColors.darkBgColor,
+                  fillColor: Theme.of(context).colorScheme.primaryContainer,
                   border: OutlineInputBorder(
                       borderRadius:
                           BorderRadius.circular(Dimensions.cornerRadius15),
@@ -202,7 +213,7 @@ class _EditedTextfieldState extends State<EditedTextfield> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             EditedText(
-                color: AppColors.greyText,
+                color: Theme.of(context).colorScheme.tertiary,
                 text: "Телефон",
                 size: Dimensions.font10 * 3.5,
                 fontWeight: FontWeight.w700),
@@ -210,21 +221,25 @@ class _EditedTextfieldState extends State<EditedTextfield> {
               width: Dimensions.margin10Width * 131.6,
               height: Dimensions.margin10Height * 10.8,
               child: TextFormField(
+                readOnly: widget.notEdited,
                 initialValue: numberFormatter.maskText(SharedPreferencesHelper.getString('number') ?? ''),
                 onChanged: (value) => onNumberChanged(numberFormatter.getUnmaskedText()),
                 inputFormatters: [numberFormatter],
                 keyboardType: TextInputType.number,
+                style: TextStyle(color: Theme.of(context).colorScheme.tertiaryContainer, fontSize: Dimensions.font10*3.5, fontFamily: 'Roboto', fontWeight: FontWeight.w500),
                 decoration: InputDecoration(
-                  suffixIcon: Icon(
-                  _isNumberValid
-                  ? Icons.check_circle_outline
-                  : Icons.error_outline,
-                  color: _isNumberValid
-                  ? AppColors.greenText
-                  : AppColors.redButtonColor,
-                ),
+                  suffixIcon: widget.notEdited
+                  ? null
+                  :Icon(
+                    _isNameValid
+                    ? Icons.check_circle_outline
+                    : Icons.error_outline,
+                    color: _isNameValid
+                    ? AppColors.greenText
+                    : AppColors.redButtonColor,
+                  ),
                   filled: true,
-                  fillColor: AppColors.darkBgColor,
+                  fillColor: Theme.of(context).colorScheme.primaryContainer,
                   border: OutlineInputBorder(
                       borderRadius:
                           BorderRadius.circular(Dimensions.cornerRadius15),
@@ -252,7 +267,7 @@ class _EditedTextfieldState extends State<EditedTextfield> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             EditedText(
-                color: AppColors.greyText,
+                color: Theme.of(context).colorScheme.tertiary,
                 text: "Телеграм id",
                 size: Dimensions.font10 * 3.5,
                 fontWeight: FontWeight.w700),
@@ -260,21 +275,25 @@ class _EditedTextfieldState extends State<EditedTextfield> {
               width: Dimensions.margin10Width * 131.6,
               height: Dimensions.margin10Height * 10.8,
               child: TextFormField(
+                readOnly: widget.notEdited,
                 initialValue: idFormatter.maskText(SharedPreferencesHelper.getString('id') ?? ''),
                 onChanged: (value) => onIdChanged(idFormatter.getUnmaskedText()),
                 inputFormatters: [idFormatter],
                 keyboardType: TextInputType.text,
+                style: TextStyle(color: Theme.of(context).colorScheme.tertiaryContainer, fontSize: Dimensions.font10*3.5, fontFamily: 'Roboto', fontWeight: FontWeight.w500),
                 decoration: InputDecoration(
-                  suffixIcon: Icon(
-                  _isIdValid
-                  ? Icons.check_circle_outline
-                  : Icons.error_outline,
-                  color: _isIdValid
-                  ? AppColors.greenText
-                  : AppColors.redButtonColor,
-                ),
+                  suffixIcon: widget.notEdited
+                  ? null
+                  :Icon(
+                    _isNameValid
+                    ? Icons.check_circle_outline
+                    : Icons.error_outline,
+                    color: _isNameValid
+                    ? AppColors.greenText
+                    : AppColors.redButtonColor,
+                  ),
                   filled: true,
-                  fillColor: AppColors.darkBgColor,
+                  fillColor: Theme.of(context).colorScheme.primaryContainer,
                   border: OutlineInputBorder(
                       borderRadius:
                           BorderRadius.circular(Dimensions.cornerRadius15),
