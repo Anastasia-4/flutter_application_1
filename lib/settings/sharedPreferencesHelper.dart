@@ -18,4 +18,14 @@ class SharedPreferencesHelper {
   static bool? getBool(String key) {
     return _sharedPreferences!.getBool(key);
   }
+
+  static Future<bool> setString(String key, String value) {
+    return _sharedPreferences!.setString(key, value);
+  }
+
+  // To get a string value
+  static String? getString(String key) {
+    return _sharedPreferences!.getString(key);
+  }
+
 }

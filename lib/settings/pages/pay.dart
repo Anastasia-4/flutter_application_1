@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
+import 'package:flutter_application_1/widgets/edited_text.dart';
 
 class Pay extends StatefulWidget {
   const Pay({super.key});
@@ -37,6 +38,11 @@ class _PayState extends State<Pay> {
                             borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
                             border: Border.all(color: AppColors.greyText, width: Dimensions.border1),
                             color: Theme.of(context).colorScheme.primaryContainer),
+                            child: Column(
+                              children: [
+                                EditedText(color: AppColors.greyText, text: 'Home', size: 20, fontWeight: FontWeight.w700)
+                              ],
+                            ),
                       ),
                       Container(
                         width: Dimensions.margin10Width * 85,

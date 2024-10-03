@@ -30,7 +30,6 @@ class _SettingsMainState extends State<SettingsMain> {
             children: [
               AppDrawer(drawerProvider: drawerProvider),
               Expanded(
-                //child: SingleChildScrollView(
                   child: Consumer<DrawerProvider>(
                     builder: (context, value, child) =>
                         value.pages[value.selectedPageIndex],
