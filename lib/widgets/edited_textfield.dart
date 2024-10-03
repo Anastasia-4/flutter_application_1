@@ -27,19 +27,19 @@ class _EditedTextfieldState extends State<EditedTextfield> {
     @override
   void initState() {
     super.initState();
-    if (SharedPreferencesHelper.getString('name') != Null)
+    if (SharedPreferencesHelper.getString('name') != null )
     _isNameValid = true;
     else
     _isNameValid = false;
-    if (SharedPreferencesHelper.getString('enail') != Null)
+    if (SharedPreferencesHelper.getString('email') != null)
     _isEmailValid = true;
     else
     _isEmailValid = false;
-    if (SharedPreferencesHelper.getString('number') != Null)
+    if (SharedPreferencesHelper.getString('number') != null)
     _isNumberValid = true;
     else
     _isNumberValid = false;
-    if (SharedPreferencesHelper.getString('id') != Null)
+    if (SharedPreferencesHelper.getString('id') != null)
     _isIdValid = true;
     else
     _isIdValid = false;
@@ -177,10 +177,10 @@ class _EditedTextfieldState extends State<EditedTextfield> {
                   suffixIcon: widget.notEdited
                   ? null
                   :Icon(
-                    _isNameValid
+                    _isEmailValid
                     ? Icons.check_circle_outline
                     : Icons.error_outline,
-                    color: _isNameValid
+                    color: _isEmailValid
                     ? AppColors.greenText
                     : AppColors.redButtonColor,
                   ),
@@ -231,10 +231,10 @@ class _EditedTextfieldState extends State<EditedTextfield> {
                   suffixIcon: widget.notEdited
                   ? null
                   :Icon(
-                    _isNameValid
+                    _isNumberValid
                     ? Icons.check_circle_outline
                     : Icons.error_outline,
-                    color: _isNameValid
+                    color: _isNumberValid
                     ? AppColors.greenText
                     : AppColors.redButtonColor,
                   ),
@@ -285,10 +285,10 @@ class _EditedTextfieldState extends State<EditedTextfield> {
                   suffixIcon: widget.notEdited
                   ? null
                   :Icon(
-                    _isNameValid
+                    _isIdValid
                     ? Icons.check_circle_outline
                     : Icons.error_outline,
-                    color: _isNameValid
+                    color: _isIdValid
                     ? AppColors.greenText
                     : AppColors.redButtonColor,
                   ),
