@@ -42,15 +42,18 @@ class _AccountState extends State<Account> {
                         children: [
                           SizedBox(height: Dimensions.margin10Height/2),
                           Container(
+                            padding: EdgeInsets.symmetric(horizontal: Dimensions.margin10Width*5, vertical: Dimensions.margin10Height*2),
                             width: Dimensions.margin10Width * 43.8,
                             height: Dimensions.margin10Height * 37.8,
                             decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.primaryContainer,
                               borderRadius: BorderRadius.circular(
                                   Dimensions.cornerRadius15),
                               border: Border.all(
                                   color: AppColors.darkerGreyText,
                                   width: Dimensions.border1),
                             ),
+                            child: Image.asset('assets/image/avatar.png', fit: BoxFit.cover, color: Theme.of(context).colorScheme.secondary),
                           ),
                           SizedBox(height: Dimensions.margin10Height/10),
                           GestureDetector(

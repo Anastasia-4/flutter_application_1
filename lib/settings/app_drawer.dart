@@ -80,7 +80,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     widget.drawerProvider.selectedMenu(3);
                   },
                 ),
-                 DrawerMenu(
+                 /*DrawerMenu(
                     isSelected: widget.drawerProvider.selectedPageIndex == 4,
                     title: "Категории",
                     selectedTitle: "Категории",
@@ -89,10 +89,10 @@ class _AppDrawerState extends State<AppDrawer> {
                     onTap: () {
                       widget.drawerProvider.selectedMenu(4);
                     },
-                  ),
+                  ),*/
                 GestureDetector(
                   child: Container(
-                        margin: EdgeInsets.only(top: Dimensions.margin10Height*46, bottom: Dimensions.margin10Height*5),
+                        margin: EdgeInsets.only(top: Dimensions.margin10Height*57.2, bottom: Dimensions.margin10Height*5),
                         child: Container(
                         padding: EdgeInsets.only(left: Dimensions.margin10Width, right: Dimensions.margin10Width),
                           width: Dimensions.settingsBtnWidth,

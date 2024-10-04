@@ -15,12 +15,14 @@ class AppColors{
   static final Color blackText = const Color(0xFF000000);
   static final Color greyText = const Color(0xFF959595);
   static final Color darkerGreyText = const Color(0xFF4B5463);
+  static final Color blueGreyText = const Color(0xFF5D5D75);
   static final Color greenText = const Color(0xFF0B8222);
 
 
   //other
   static final Color yellowButtonColor = const Color(0xFFFFA903);
   static final Color blueButtonColor = const Color(0xFF295FF1);
+  static final Color purpleButtonColor = const Color(0xFF6900FF);
   static final Color redButtonColor = const Color(0xFFA90000);
   static final Color blackButtonColor = const Color(0xFF020C1C);
   static final Color whiteButtonColor = const Color(0xFFFFFFFF);

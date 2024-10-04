@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/settings/pages/account.dart';
+import 'package:flutter_application_1/settings/pages/devices.dart';
 import 'package:flutter_application_1/settings/pages/pay.dart';
 import 'package:flutter_application_1/settings/pages/settings_general.dart';
 
@@ -8,23 +9,10 @@ class DrawerProvider extends ChangeNotifier{
   int selectedPageIndex = 0;
 
   var pages = [
-    /*const DashboardPage(),
-    const ProductPage(),
-    const CategoryPage(),
-    const CouponPage(),
-    const SettingsPage(),*/
-
     const Account(),
     const Pay(),
     const SettingsGeneral(),
-    const Account(),
-    const Account(),
-
-    /*Container(color: Colors.red),
-    Container(color: Colors.blue),
-    Container(color: Colors.pink),
-    Container(color: Colors.yellow),
-    Container(color: Colors.purple),*/
+    const Devices(),
   ];
 
   void selectedMenu(int index) {

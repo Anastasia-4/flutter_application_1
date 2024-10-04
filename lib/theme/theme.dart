@@ -11,6 +11,7 @@ ThemeData darkMode = ThemeData(
     tertiary: AppColors.greyText,
     tertiaryContainer: AppColors.whiteText,
     tertiaryFixed: Colors.transparent,
+    secondary: AppColors.greyText,
     primaryFixedDim: AppColors.darkBgColor
   )
 );
@@ -25,6 +26,7 @@ ThemeData lightMode = ThemeData(
     tertiary: AppColors.blackText,
     tertiaryContainer: AppColors.blackText,
     tertiaryFixed: AppColors.greyText,
+    secondary: AppColors.whiteText,
     primaryFixedDim: AppColors.yellowButtonColor
   )
 );
