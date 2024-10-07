@@ -15,17 +15,20 @@ class Devices extends StatefulWidget {
 }
 
 class _DevicesState extends State<Devices> {
-  late TextEditingController controller;
+  late TextEditingController nameController;
+  late TextEditingController numController;
 
   @override
     void initState(){
       super.initState();
-      controller = TextEditingController();
+      nameController = TextEditingController();
+      numController = TextEditingController();
     }
 
   @override
   void dispose() {
-    controller.dispose();
+    nameController.dispose();
+    numController.dispose();
     super.dispose();
   }
 
@@ -169,8 +172,8 @@ class _DevicesState extends State<Devices> {
                     width: Dimensions.margin10Width * 131.6,
                     height: Dimensions.margin10Height * 10.8,
                     child: TextFormField(
+                      controller: nameController,
                       autofocus: true,
-                      keyboardType: TextInputType.name,
                       style: TextStyle(color: Theme.of(context).colorScheme.tertiaryContainer, fontSize: Dimensions.font10*3.5, fontFamily: 'Roboto', fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
                         filled: true,
@@ -210,7 +213,7 @@ class _DevicesState extends State<Devices> {
                     width: Dimensions.margin10Width * 131.6,
                     height: Dimensions.margin10Height * 10.8,
                     child: TextFormField(
-                      keyboardType: TextInputType.name,
+                      controller: numController,
                       style: TextStyle(color: Theme.of(context).colorScheme.tertiaryContainer, fontSize: Dimensions.font10*3.5, fontFamily: 'Roboto', fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
                         filled: true,
@@ -256,14 +259,10 @@ class _DevicesState extends State<Devices> {
                               color: AppColors.yellowButtonColor
                             ),
                             child: EditedText(color: AppColors.blackText, text: 'Сохранить', size: Dimensions.font10*3.3, fontWeight: FontWeight.w500)),
-                        onTap: () => Navigator.of(context).pop(controller.text),
+                        onTap: () => Navigator.of(context).pop(nameController.text, numController.text),
                         ),
         ],
       ),
     ],
   ));
-
-  void submit(){
-    Navigator.of(context).pop(controller.text);
-  }
 }
