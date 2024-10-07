@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home/main_page.dart';
 import 'package:flutter_application_1/provider/drawerProvider.dart';
+import 'package:flutter_application_1/settings/pages/new.dart';
 import 'package:flutter_application_1/settings/settings_main.dart';
 import 'package:flutter_application_1/settings/sharedPreferencesHelper.dart';
 import 'package:flutter_application_1/theme/theme_provider.dart';
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'UnitVR',
       theme: Provider.of<ThemeProvider>(context).themeData,
-      home: MainPage(),
+      home: SettingsMain(),
     );
   }
 }
