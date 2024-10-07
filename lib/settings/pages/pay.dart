@@ -17,12 +17,6 @@ class Pay extends StatefulWidget {
 class _PayState extends State<Pay> {
   var value = 3;
   var bp_value = 1;
-  /*bool Check1 = true;
-  bool Check2 = true;
-  bool Check3 = false;
-  bool Check4 = false;
-  bool Check5 = false;
-  bool Check6 = false;*/
   List<bool> list = [
     true,
     true,
