@@ -28,7 +28,7 @@ class Dimensions {
   static double cornerRadius15 = screenHeight/106.67;
 
 
-  static double font10 = screenHeight/160;
+  static double font10 = screenWidth/256;
   static double font37 = screenHeight/43.24;
   static double font35 = screenHeight/45.71;
 
@@ -47,6 +47,9 @@ class Dimensions {
 
   static double devicesListWidth = screenWidth/6.4;
   static double devicesListHeight = screenHeight/7.88;
+
+  static double accountHeight= screenHeight/1.76;
+  static double accountInfoHeight= screenHeight/2.67;
 
 
 

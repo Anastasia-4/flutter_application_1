@@ -20,7 +20,9 @@ class EditedTab extends StatelessWidget {
               vertical: BorderSide(color: AppColors.greyText))),*/
       child: EditedText(
           color: AppColors.whiteText,
-          text: text ?? 'Устройство $id',
+          text: text == ''
+          ?'Устройство $id'
+          : text,
           size: Dimensions.font10 * 3.5,
           fontWeight: FontWeight.w700),
     );

@@ -325,75 +325,136 @@ class _PayState extends State<Pay> {
                                     Row(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Container(
-                                          margin: EdgeInsets.only(top: Dimensions.margin10Height/2),
-                                          child: Column(
-                                            children: [
-                                              GestureDetector(
-                                                child: PayCheck(
-                                                    isChecked: list[0]),
-                                                onTap: () {
-                                                  setState(
-                                                    () => list[0] = !list[0],
-                                                  );
-                                                },
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Center(
+                                              child: Row(
+                                                children: [
+                                                  GestureDetector(
+                                                    child: PayCheck(
+                                                        isChecked: list[0]),
+                                                    onTap: () {
+                                                      setState(
+                                                        () => list[0] = !list[0],
+                                                      );
+                                                    },
+                                                  ),
+                                                  EditedText(
+                                                color: Theme.of(context).colorScheme.tertiaryContainer,
+                                                text:
+                                                    'История запуска игр день/неделя/месяц',
+                                                size: Dimensions.font10 * 3.5,
+                                                fontWeight: FontWeight.w400)
+                                                                                      
+                                                ],
                                               ),
-                                              GestureDetector(
-                                                child: PayCheck(
-                                                    isChecked: list[1]),
-                                                onTap: () {
-                                                  setState(
-                                                    () => list[1] = !list[1],
-                                                  );
-                                                },
-                                              ),
-                                              GestureDetector(
-                                                child: PayCheck(
-                                                    isChecked: list[2]),
-                                                onTap: () {
-                                                  setState(
-                                                    () => list[2] = !list[2],
-                                                  );
-                                                },
-                                              ),
-                                              GestureDetector(
-                                                child: PayCheck(
-                                                    isChecked: list[3]),
-                                                onTap: () {
-                                                  setState(
-                                                    () => list[3] = !list[3],
-                                                  );
-                                                },
-                                              ),
-                                              GestureDetector(
-                                                child: PayCheck(
-                                                    isChecked: list[4]),
-                                                onTap: () {
-                                                  setState(
-                                                    () => list[4] = !list[4],
-                                                  );
-                                                },
-                                              ),
-                                              GestureDetector(
-                                                child: PayCheck(
-                                                    isChecked: list[5]),
-                                                onTap: () {
-                                                  setState(
-                                                    () => list[5] = !list[5],
-                                                  );
-                                                },
-                                              ),
-                                            ],
-                                          ),
+                                            ),
+                                            Row(
+                                              children: [
+                                                GestureDetector(
+                                                  child: PayCheck(
+                                                      isChecked: list[1]),
+                                                  onTap: () {
+                                                    setState(
+                                                      () => list[1] = !list[1],
+                                                    );
+                                                  },
+                                                ),
+                                                EditedText(
+                                                color: Theme.of(context).colorScheme.tertiaryContainer,
+                                                text:
+                                                    'Отправка отчетов на почту руководителю',
+                                                size: Dimensions.font10 * 3.5,
+                                                fontWeight: FontWeight.w400)
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                GestureDetector(
+                                                  child: PayCheck(
+                                                      isChecked: list[2]),
+                                                  onTap: () {
+                                                    setState(
+                                                      () => list[2] = !list[2],
+                                                    );
+                                                  },
+                                                ),
+                                                EditedText(
+                                                color: Theme.of(context).colorScheme.tertiaryContainer,
+                                                text:
+                                                    'Привязка кассы к приложению Unit VR',
+                                                size: Dimensions.font10 * 3.5,
+                                                fontWeight: FontWeight.w400)
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                GestureDetector(
+                                                  child: PayCheck(
+                                                      isChecked: list[3]),
+                                                  onTap: () {
+                                                    setState(
+                                                      () => list[3] = !list[3],
+                                                    );
+                                                  },
+                                                ),
+                                                EditedText(
+                                                color: Theme.of(context).colorScheme.tertiaryContainer,
+                                                text:
+                                                    'Бронирование клуба через ПО',
+                                                size: Dimensions.font10 * 3.5,
+                                                fontWeight: FontWeight.w400)
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                GestureDetector(
+                                                  child: PayCheck(
+                                                      isChecked: list[4]),
+                                                  onTap: () {
+                                                    setState(
+                                                      () => list[4] = !list[4],
+                                                    );
+                                                  },
+                                                ),
+                                                EditedText(
+                                                color: Theme.of(context).colorScheme.tertiaryContainer,
+                                                text:
+                                                    'Чат с клиентами клуба',
+                                                size: Dimensions.font10 * 3.5,
+                                                fontWeight: FontWeight.w400)
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                GestureDetector(
+                                                  child: PayCheck(
+                                                      isChecked: list[5]),
+                                                  onTap: () {
+                                                    setState(
+                                                      () => list[5] = !list[5],
+                                                    );
+                                                  },
+                                                ),
+                                                EditedText(
+                                                color: Theme.of(context).colorScheme.tertiaryContainer,
+                                                text:
+                                                    'Распределение игр по категориям',
+                                                size: Dimensions.font10 * 3.5,
+                                                fontWeight: FontWeight.w400)
+                                              ],
+                                            ),
+                                          ],
                                         ),
-                                        Container(
+                                        /*Container(
                                             alignment: Alignment.centerLeft,
                                             child: EditedText(
                                                 color: Theme.of(context).colorScheme.tertiaryContainer,
                                                 text:
-                                                    'История запуска игр день/неделя/месяц\nОтправка отчетов на почту руководителю\nПривязка кассы к приложению Unit VR\nБронирование клуба через ПО\nЧат с клиентами клуба\nРаспределение игр по категориям',
+                                                    'Привязка кассы к приложению Unit VR\nБронирование клуба через ПО\nЧат с клиентами клуба\nРаспределение игр по категориям',
                                                 size: Dimensions.font10 * 3.5,
-                                                fontWeight: FontWeight.w400)),
+                                                fontWeight: FontWeight.w400)),*/
                                       ],
                                     ),
                                     EditedText(color: AppColors.blueGreyText, text: '+ 400 ₽ / функция', size: Dimensions.font10*4, fontWeight: FontWeight.w700)

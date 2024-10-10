@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'UnitVR',
       theme: Provider.of<ThemeProvider>(context).themeData,
-      home: SettingsMain(),
+      home: MainPage(),
     );
   }
 }
