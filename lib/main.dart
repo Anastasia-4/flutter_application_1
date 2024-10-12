@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home/main_page.dart';
 import 'package:flutter_application_1/provider/drawerProvider.dart';
-import 'package:flutter_application_1/settings/pages/new.dart';
+import 'package:flutter_application_1/provider/time_provider.dart';
 import 'package:flutter_application_1/settings/settings_main.dart';
 import 'package:flutter_application_1/settings/sharedPreferencesHelper.dart';
 import 'package:flutter_application_1/theme/theme_provider.dart';
+import 'package:flutter_application_1/widgets/device_tile.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +22,9 @@ void main() async {
     providers: [
       ChangeNotifierProvider(
         create: (_) =>DrawerProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) =>TimerProvider(),
       ),
       ChangeNotifierProvider(
         create: (BuildContext context) =>ThemeProvider(isDark: SharedPreferencesHelper.getBool("Theme") ?? true),

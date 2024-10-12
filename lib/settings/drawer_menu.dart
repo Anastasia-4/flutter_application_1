@@ -23,6 +23,7 @@ class DrawerMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      minTileHeight: Dimensions.margin10Height*13.4,
       onTap: onTap,
       title: EditedText(color: isSelected
       ? Theme.of(context).colorScheme.tertiary

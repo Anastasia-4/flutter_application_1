@@ -33,7 +33,6 @@ class DatabaseService {
             $_devicesSerialNumColumnName TEXT NOT NULL
           )
         ''');
-        db.insert(_devicesTableName, {_devicesNameColumnName: 'Устройство 1',_devicesSerialNumColumnName: 'serial number'});
       },
     );
     return database;
@@ -51,6 +50,27 @@ class DatabaseService {
     );
   }
 
+    void updateDevice(int id, String name, String serialNum) async {
+    final db = await database;
+    await db.update(
+      _devicesTableName,
+      {_devicesNameColumnName: name,
+      _devicesSerialNumColumnName: serialNum},
+      where: '$_devicesIdColumnName = ?',
+      whereArgs: [id]
+    );
+  }
+
+  void deleteDevice(int id) async {
+    final db = await database;
+    await db.delete(
+      _devicesTableName,
+      where: '${_devicesIdColumnName} = ?',
+      whereArgs: [id]
+    );
+  }
+
+
   Future<List<Device>> getDevice() async {
     final db = await database;
     final data = await db.query(_devicesTableName);
@@ -62,11 +82,4 @@ class DatabaseService {
         .toList();
     return devices;
   }
-
-    Future<int> getCount() async {
-    final db = await database;
-    var x = await db.rawQuery('SELECT COUNT (*) from $_devicesTableName');
-    int count = Sqflite.firstIntValue(x) as int;
-    return count;
-    }
 }

@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/home/devices_list.dart';
+import 'package:flutter_application_1/provider/time_provider.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
 import 'package:flutter_application_1/widgets/edited_text.dart';
+import 'package:get/get_rx/get_rx.dart';
+import 'package:provider/provider.dart';
 
 class Timer extends StatefulWidget {
-  const Timer({super.key});
+  Timer({super.key});
 
   @override
   State<Timer> createState() => _TimerState();
 }
 
 class _TimerState extends State<Timer> {
+  final DevicesList devicesList = new DevicesList();
   @override
   Widget build(BuildContext context) {
+    
     return Container(
                   margin: EdgeInsets.only(bottom: Dimensions.margin10Height*3.7),
                   width: Dimensions.mainWidthContainer,
@@ -46,15 +52,20 @@ class _TimerState extends State<Timer> {
                   child: Row(
                     children: [
                       Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(left: Dimensions.margin10Width*3.2),
-                          height: Dimensions.buttonHeight,
-                          decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
-                          color: AppColors.yellowButtonColor,
-                        ),
-                        alignment: Alignment.center,
-                        child: EditedText(color: AppColors.blackText, text: "Пауза", size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
+                        child: GestureDetector(
+                          child: Container(
+                            margin: EdgeInsets.only(left: Dimensions.margin10Width*3.2),
+                            height: Dimensions.buttonHeight,
+                            decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
+                            color: AppColors.yellowButtonColor,
+                          ),
+                          alignment: Alignment.center,
+                          child: EditedText(color: AppColors.blackText, text: "Пауза", size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
+                          ),
+                          onTap: () {
+                            //devicesList.;
+                          },
                         ),
                       ),
                       Expanded(
