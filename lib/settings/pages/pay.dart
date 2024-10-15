@@ -188,7 +188,12 @@ class _PayState extends State<Pay> {
                                                 fontWeight: FontWeight.w700)),
                                         onTap: () {
                                           setState(() {
-                                            value < 20 ? value++ : value = 20;
+                                            if(value < 20 ){
+                                              value++;
+                                              Feedback.forTap(context);
+                                            } else {
+                                              value = 20;
+                                            }
                                           });
                                         },
                                       )),
@@ -213,7 +218,12 @@ class _PayState extends State<Pay> {
                                                 fontWeight: FontWeight.w700)),
                                         onTap: () {
                                           setState(() {
-                                            value > 1 ? value-- : value = 1;
+                                            if (value > 1) {
+                                              value--;
+                                              Feedback.forTap(context);
+                                            } else {
+                                              value = 1;
+                                            } 
                                           });
                                         },
                                       )),
@@ -335,9 +345,10 @@ class _PayState extends State<Pay> {
                                                     child: PayCheck(
                                                         isChecked: list[0]),
                                                     onTap: () {
-                                                      setState(
-                                                        () => list[0] = !list[0],
-                                                      );
+                                                      setState(() {
+                                                        list[0] = !list[0];
+                                                        Feedback.forTap(context);
+                                                      });
                                                     },
                                                   ),
                                                   EditedText(
@@ -356,9 +367,10 @@ class _PayState extends State<Pay> {
                                                   child: PayCheck(
                                                       isChecked: list[1]),
                                                   onTap: () {
-                                                    setState(
-                                                      () => list[1] = !list[1],
-                                                    );
+                                                    setState(() {
+                                                        list[1] = !list[1];
+                                                        Feedback.forTap(context);
+                                                      });
                                                   },
                                                 ),
                                                 EditedText(
@@ -375,9 +387,10 @@ class _PayState extends State<Pay> {
                                                   child: PayCheck(
                                                       isChecked: list[2]),
                                                   onTap: () {
-                                                    setState(
-                                                      () => list[2] = !list[2],
-                                                    );
+                                                    setState(() {
+                                                        list[2] = !list[2];
+                                                        Feedback.forTap(context);
+                                                      });
                                                   },
                                                 ),
                                                 EditedText(
@@ -394,9 +407,10 @@ class _PayState extends State<Pay> {
                                                   child: PayCheck(
                                                       isChecked: list[3]),
                                                   onTap: () {
-                                                    setState(
-                                                      () => list[3] = !list[3],
-                                                    );
+                                                    setState(() {
+                                                        list[3] = !list[3];
+                                                        Feedback.forTap(context);
+                                                      });
                                                   },
                                                 ),
                                                 EditedText(
@@ -413,9 +427,10 @@ class _PayState extends State<Pay> {
                                                   child: PayCheck(
                                                       isChecked: list[4]),
                                                   onTap: () {
-                                                    setState(
-                                                      () => list[4] = !list[4],
-                                                    );
+                                                    setState(() {
+                                                        list[4] = !list[4];
+                                                        Feedback.forTap(context);
+                                                      });
                                                   },
                                                 ),
                                                 EditedText(
@@ -432,9 +447,10 @@ class _PayState extends State<Pay> {
                                                   child: PayCheck(
                                                       isChecked: list[5]),
                                                   onTap: () {
-                                                    setState(
-                                                      () => list[5] = !list[5],
-                                                    );
+                                                    setState(() {
+                                                        list[5] = !list[5];
+                                                        Feedback.forTap(context);
+                                                      });
                                                   },
                                                 ),
                                                 EditedText(
@@ -500,7 +516,12 @@ class _PayState extends State<Pay> {
                                                       fontWeight: FontWeight.w700)),
                                               onTap: () {
                                                 setState(() {
-                                                  bp_value < 20 ? bp_value++ : bp_value = 20;
+                                                  if (bp_value < 20) {
+                                                    bp_value++;
+                                                    Feedback.forTap(context);
+                                                  } else {
+                                                    bp_value = 20;
+                                                  }
                                                 });
                                               },
                                             )),
@@ -525,7 +546,12 @@ class _PayState extends State<Pay> {
                                                       fontWeight: FontWeight.w700)),
                                               onTap: () {
                                                 setState(() {
-                                                  bp_value > 1 ? bp_value-- : bp_value = 1;
+                                                  if (bp_value > 1) {
+                                                    bp_value--;
+                                                    Feedback.forTap(context);
+                                                  } else {
+                                                    bp_value = 1;
+                                                  }
                                                 });
                                               },
                                             )),

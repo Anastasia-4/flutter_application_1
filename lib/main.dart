@@ -5,7 +5,7 @@ import 'package:flutter_application_1/provider/time_provider.dart';
 import 'package:flutter_application_1/settings/settings_main.dart';
 import 'package:flutter_application_1/settings/sharedPreferencesHelper.dart';
 import 'package:flutter_application_1/theme/theme_provider.dart';
-import 'package:flutter_application_1/widgets/device_tile.dart';
+//import 'package:flutter_application_1/widgets/device_tile.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -23,9 +23,9 @@ void main() async {
       ChangeNotifierProvider(
         create: (_) =>DrawerProvider(),
       ),
-      ChangeNotifierProvider(
+      /*ChangeNotifierProvider(
         create: (context) =>TimerProvider(),
-      ),
+      ),*/
       ChangeNotifierProvider(
         create: (BuildContext context) =>ThemeProvider(isDark: SharedPreferencesHelper.getBool("Theme") ?? true),
       ),

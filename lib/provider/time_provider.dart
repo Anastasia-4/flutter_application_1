@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'dart:async';
 
 class TimerProvider extends ChangeNotifier {
@@ -54,4 +54,4 @@ class TimerProvider extends ChangeNotifier {
     _initialTime = seconds;
     notifyListeners();
   }
-}
+}*/

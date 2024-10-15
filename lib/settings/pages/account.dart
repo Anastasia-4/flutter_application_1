@@ -80,6 +80,7 @@ class _AccountState extends State<Account> {
                             fontWeight: FontWeight.w500),
                       ),
                       onTap: () => setState(() {
+                        Feedback.forTap(context);
                         notEdited = false;
                       }),
                     ),
@@ -99,6 +100,7 @@ class _AccountState extends State<Account> {
                             fontWeight: FontWeight.w500),
                       ),
                       onTap: () => setState(() {
+                        Feedback.forTap(context);
                         notEdited = true;
                       }),
                     )

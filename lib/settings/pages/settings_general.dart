@@ -28,6 +28,12 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
   void initState() {
     super.initState();
     _Theme = SharedPreferencesHelper.getBool("Theme") ?? true;
+    ShowGames =  SharedPreferencesHelper.getBool("Games") ?? false;
+    LaunchDemo =  SharedPreferencesHelper.getBool("Demo") ?? false;
+    Check15 =  SharedPreferencesHelper.getBool("Check15") ?? false;
+    Check30 = SharedPreferencesHelper.getBool("Check30") ?? true;
+    Check45 = SharedPreferencesHelper.getBool("Check45") ?? true;
+    Check60 = SharedPreferencesHelper.getBool("Check60") ?? true;
   }
   
   @override
@@ -66,22 +72,38 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                           children: [
                             GestureDetector(child: EditedCheck(text: '15', isChecked: Check15),onTap: () {
                               setState(
-                                () => Check15 = !Check15,
+                                () {
+                                  Check15 = !Check15;
+                                  SharedPreferencesHelper.setBool("Check15", Check15);
+                                  Feedback.forTap(context);
+                                }
                               );
                             },),
                             GestureDetector(child: EditedCheck(text: '30', isChecked: Check30),onTap: () {
                               setState(
-                                () => Check30 = !Check30,
+                                () {
+                                  Check30 = !Check30;
+                                  SharedPreferencesHelper.setBool("Check30", Check30);
+                                  Feedback.forTap(context);
+                                } 
                               );
                             },),
                             GestureDetector(child: EditedCheck(text: '45', isChecked: Check45),onTap: () {
                               setState(
-                                () => Check45 = !Check45,
+                                () {
+                                  Check45 = !Check45;
+                                  SharedPreferencesHelper.setBool("Check45", Check45);
+                                  Feedback.forTap(context);
+                                } 
                               );
                             },),
                             GestureDetector(child: EditedCheck(text: '60', isChecked: Check60),onTap: () {
                               setState(
-                                () => Check60 = !Check60,
+                                () {
+                                  Check60 = !Check60;
+                                  SharedPreferencesHelper.setBool("Check60", Check60);
+                                  Feedback.forTap(context);
+                                } 
                               );
                             },),
                           ],
@@ -107,12 +129,20 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                           children: [
                             GestureDetector(child: EditedCheck(text: 'Да', isChecked: LaunchDemo),onTap: () {
                               setState(
-                                () => LaunchDemo = true,
+                                () {
+                                  LaunchDemo = true;
+                                  SharedPreferencesHelper.setBool("Demo", true);
+                                  Feedback.forTap(context);
+                                }
                               );
                             },),
                             GestureDetector(child: EditedCheck(text: 'Нет', isChecked: !LaunchDemo),onTap: () {
                               setState(
-                                () => LaunchDemo = false,
+                                () {
+                                  LaunchDemo = false;
+                                  SharedPreferencesHelper.setBool("Demo", false);
+                                  Feedback.forTap(context);
+                                }
                               );
                             },),
                           ],
@@ -138,12 +168,20 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                           children: [
                             GestureDetector(child: EditedCheck(text: 'Да', isChecked: ShowGames),onTap: () {
                               setState(
-                                () => ShowGames = true,
+                                () {
+                                 ShowGames = true;
+                                 SharedPreferencesHelper.setBool("Games", true);
+                                 Feedback.forTap(context);
+                                }  
                               );
                             },),
                             GestureDetector(child: EditedCheck(text: 'Нет', isChecked: !ShowGames),onTap: () {
                               setState(
-                                () => ShowGames = false,
+                                () {
+                                  ShowGames = false;
+                                  SharedPreferencesHelper.setBool("Games", false);  
+                                  Feedback.forTap(context);
+                                }
                               );
                             },),
                           ],
@@ -172,6 +210,7 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                                 () {
                                   _Theme = true;
                                   SharedPreferencesHelper.setBool("Theme", true);
+                                  Feedback.forTap(context);
                                 },
                               );
                               Provider.of<ThemeProvider>(context, listen: false).toggleTheme(_Theme);
@@ -184,6 +223,7 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                                 () {
                                   _Theme = false;
                                   SharedPreferencesHelper.setBool("Theme", false);
+                                  Feedback.forTap(context);
                                 },
                               );
                               Provider.of<ThemeProvider>(context, listen: false).toggleTheme(_Theme);

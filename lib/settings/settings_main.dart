@@ -5,7 +5,7 @@ import 'package:flutter_application_1/utils/dimensions.dart';
 import 'package:provider/provider.dart';
 
 class SettingsMain extends StatefulWidget {
-  const SettingsMain({super.key});
+  SettingsMain({super.key});
 
   @override
   State<SettingsMain> createState() => _SettingsMainState();

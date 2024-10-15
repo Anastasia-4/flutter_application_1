@@ -141,6 +141,7 @@ class _AppDrawerState extends State<AppDrawer> {
                             ),
                           )),
                       onTap: () {
+                        Feedback.forTap(context);
                         Navigator.pop(context);
                       },
                     ),

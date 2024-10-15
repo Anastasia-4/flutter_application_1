@@ -1,18 +1,15 @@
-import 'dart:async';
+/*import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/services/database_service.dart';
 import 'package:flutter_application_1/services/device_model.dart';
 import 'package:flutter_application_1/settings/settings_main.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
-import 'package:flutter_application_1/widgets/device_tile.dart';
+//import 'package:flutter_application_1/widgets/device_tile.dart';
 import 'package:flutter_application_1/widgets/edited_text.dart';
-import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/provider/time_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_countdown_timer/current_remaining_time.dart';
-
 class DevicesList extends StatefulWidget {
   const DevicesList({super.key});
 
@@ -317,4 +314,4 @@ class _DevicesListState extends State<DevicesList> {
                   );
                 })));
   }
-}
+}*/

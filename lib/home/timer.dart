@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home/devices_list.dart';
 import 'package:flutter_application_1/provider/time_provider.dart';
 import 'package:flutter_application_1/utils/colors.dart';
@@ -15,7 +15,6 @@ class Timer extends StatefulWidget {
 }
 
 class _TimerState extends State<Timer> {
-  final DevicesList devicesList = new DevicesList();
   @override
   Widget build(BuildContext context) {
     
@@ -111,4 +110,4 @@ class _TimerState extends State<Timer> {
               ),
               );
   }
-}
+}*/

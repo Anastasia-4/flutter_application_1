@@ -10,6 +10,7 @@ class DatabaseService {
   final String _devicesIdColumnName = "id";
   final String _devicesNameColumnName = "name";
   final String _devicesSerialNumColumnName = "serialNum";
+  final String _devicesIPNumColumnName = "ipNum";
 
   DatabaseService._constructor();
 
@@ -30,7 +31,8 @@ class DatabaseService {
           CREATE TABLE $_devicesTableName (
             $_devicesIdColumnName INTEGER PRIMARY KEY AUTOINCREMENT,
             $_devicesNameColumnName TEXT NOT NULL,
-            $_devicesSerialNumColumnName TEXT NOT NULL
+            $_devicesSerialNumColumnName TEXT NOT NULL,
+            $_devicesIPNumColumnName TEXT NOT NULL
           )
         ''');
       },
@@ -43,9 +45,9 @@ class DatabaseService {
     await db.insert(
       _devicesTableName,
       {
-        //_devicesIdColumnName: id,
         _devicesNameColumnName: name,
-        _devicesSerialNumColumnName: serialNum
+        _devicesSerialNumColumnName: serialNum,
+        _devicesIPNumColumnName: ""
       },
     );
   }
@@ -65,7 +67,7 @@ class DatabaseService {
     final db = await database;
     await db.delete(
       _devicesTableName,
-      where: '${_devicesIdColumnName} = ?',
+      where: '$_devicesIdColumnName = ?',
       whereArgs: [id]
     );
   }
@@ -78,8 +80,27 @@ class DatabaseService {
         .map((e) => Device(
             id: e["id"] as int,
             name: e["name"] as String,
-            serialNum: e["serialNum"] as String))
+            serialNum: e["serialNum"] as String,
+            ipNum: e["ipNum"] as String
+            ))
         .toList();
     return devices;
   }
+
+    void addIPDevice(int id, String ip) async {
+    final db = await database;
+    await db.update(
+      _devicesTableName,
+      {_devicesIPNumColumnName: ip,},
+      where: '$_devicesIdColumnName = ?',
+      whereArgs: [id]
+    );
+  }
+
+  Future<int> getCount() async {
+    final db = await database;
+    var x = await db.rawQuery('SELECT COUNT (*) from $_devicesTableName');
+    int count = Sqflite.firstIntValue(x) ?? 0;
+    return count as int;
+}
 }
