@@ -37,13 +37,44 @@ class _IpDialogContentState extends State<IpDialogContent> {
             children: [
               SizedBox(
                 width: Dimensions.margin10Width * 28,
-                height: Dimensions.margin10Height * 7,),
+                height: Dimensions.margin10Height * 7),
               EditedText(color: AppColors.whiteText, text: "Список трансляций :", size: Dimensions.font10*4.8, fontWeight: FontWeight.w700),
-              Container(
-                width: Dimensions.margin10Width * 28,
-                height: Dimensions.margin10Height * 7,
-                color: AppColors.blueButtonColor,
-              )
+              GestureDetector(
+                      child: Container(
+                          margin: EdgeInsets.only(
+                              bottom: Dimensions.margin10Height * 5),
+                          child: Container(
+                            padding: EdgeInsets.only(
+                                left: Dimensions.margin10Width,
+                                right: Dimensions.margin10Width),
+                            width: Dimensions.margin10Width*28,
+                            height: Dimensions.margin10Height*7,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    Dimensions.cornerRadius15),
+                                color: AppColors.blueButtonColor),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/image/exit.png',
+                                  width: Dimensions.margin10Width * 5,
+                                  fit: BoxFit.contain,
+                                ),
+                                EditedText(
+                                  color: AppColors.whiteText,
+                                  text: "  Закрыть",
+                                  size: Dimensions.font10 * 3.2,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ],
+                            ),
+                          )),
+                      onTap: () {
+                        Feedback.forTap(context);
+                        Navigator.pop(context);
+                      },
+                    ),
             ],
           ),
           SizedBox(height: Dimensions.margin10Height*2),

@@ -55,8 +55,11 @@ class _DevicesState extends State<Devices> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Padding(
+    return CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Padding(
       padding: EdgeInsets.only(left: Dimensions.margin10Width * 2.7),
       child: Column(
         children: [ isLoaded
@@ -121,7 +124,9 @@ class _DevicesState extends State<Devices> {
         ],
       ),
     )
-        );
+        )
+      ],
+    );
   }
 
   Widget _devicesList() {
@@ -334,9 +339,7 @@ class _DevicesState extends State<Devices> {
                     ),
                     child: EditedText(
                         color: AppColors.blackText,
-                        text: GlobalVariables.canDelete == true
-                        ? 'Удалить устройство'
-                        : 'Хрен',
+                        text: 'Удалить устройство',
                         size: Dimensions.font10 * 3,
                         fontWeight: FontWeight.w500),
                   ),

@@ -26,7 +26,7 @@ class _AccountState extends State<Account> {
         children: [
           Container(
             width: Dimensions.mainWidthContainer,
-            height: Dimensions.margin10Height * 90.7,
+            height: Dimensions.margin10Height * 88,
             padding: EdgeInsets.symmetric(
                 vertical: Dimensions.margin10Height * 6),
             decoration: BoxDecoration(
@@ -110,6 +110,7 @@ class _AccountState extends State<Account> {
               ],
             ),
           ),
+          SizedBox(height: Dimensions.margin10Height*2.7),
           Container(
             width: Dimensions.mainWidthContainer,
             height: Dimensions.margin10Height * 60,
