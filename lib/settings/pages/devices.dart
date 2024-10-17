@@ -54,77 +54,75 @@ class _DevicesState extends State<Devices> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Padding(
-      padding: EdgeInsets.only(left: Dimensions.margin10Width * 2.7),
-      child: isLoaded
-      ?Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+    return Padding(
+          padding: EdgeInsets.only(left: Dimensions.margin10Width * 2.7),
+          child: isLoaded
+          ?Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+     SizedBox(
+      height: Dimensions.margin10Height * 10,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-           SizedBox(
-            height: Dimensions.margin10Height * 10,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                    width: Dimensions.margin10Width * 160,
-                    child: _devicesList()),
-                Expanded(
-                    child: Center(
-                  child: GestureDetector(
-                    child: Container(
-                        alignment: Alignment.center,
-                        width: Dimensions.margin10Width * 33.5,
-                        height: Dimensions.margin10Height * 7.5,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                Dimensions.cornerRadius20),
-                            color: (currentDevicesCount == finalDevicesCount)
-                                ? Color(0xFF89631A)
-                                : AppColors.yellowButtonColor),
-                        child: EditedText(
-                            color: AppColors.blackText,
-                            text: 'Добавить',
-                            size: Dimensions.font10 * 3.3,
-                            fontWeight: FontWeight.w500)),
-                    onTap: () {
-                      setState(() {
-                        nameController.text = "";
-                        numController.text = "";
-                      });
-                      if (currentDevicesCount == finalDevicesCount){
-                        null;
-                      } else {
-                        openDialog();
-                        Feedback.forTap(context);
-                      }
-                    },
-                  ),
-                ))
-              ],
-            ),
-          ),
+          SizedBox(
+              width: Dimensions.margin10Width * 160,
+              child: _devicesList()),
           Expanded(
-            child: Container(
-              padding: EdgeInsets.only(
-                  top: Dimensions.margin10Height * 7.7,
-                  left: Dimensions.margin10Width * 5.8,
-                  right: Dimensions.margin10Width * 5.8),
-              decoration: BoxDecoration(
-                border: Border.all(
-                        color: Theme.of(context).colorScheme.tertiaryFixed,
-                        width: Dimensions.border1),
-                borderRadius: BorderRadius.vertical(
-                    bottom: Radius.circular(Dimensions.cornerRadius20)),
-                color: Theme.of(context).colorScheme.primary
-              ),
-              child: _deviceInfo(),
+              child: Center(
+            child: GestureDetector(
+              child: Container(
+                  alignment: Alignment.center,
+                  width: Dimensions.margin10Width * 33.5,
+                  height: Dimensions.margin10Height * 7.5,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                          Dimensions.cornerRadius20),
+                      color: (currentDevicesCount == finalDevicesCount)
+                          ? Color(0xFF89631A)
+                          : AppColors.yellowButtonColor),
+                  child: EditedText(
+                      color: AppColors.blackText,
+                      text: 'Добавить',
+                      size: Dimensions.font10 * 3.3,
+                      fontWeight: FontWeight.w500)),
+              onTap: () {
+                setState(() {
+                  nameController.text = "";
+                  numController.text = "";
+                });
+                if (currentDevicesCount == finalDevicesCount){
+                  null;
+                } else {
+                  openDialog();
+                  Feedback.forTap(context);
+                }
+              },
             ),
-          )
+          ))
         ],
-      )
-      : Center(child: CircularProgressIndicator())
+      ),
+    ),
+    Expanded(
+      child: Container(
+        padding: EdgeInsets.only(
+            top: Dimensions.margin10Height * 7.7,
+            left: Dimensions.margin10Width * 5.8,
+            right: Dimensions.margin10Width * 5.8),
+        decoration: BoxDecoration(
+          border: Border.all(
+                  color: Theme.of(context).colorScheme.tertiaryFixed,
+                  width: Dimensions.border1),
+          borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(Dimensions.cornerRadius20)),
+          color: Theme.of(context).colorScheme.primary
+        ),
+        child: _deviceInfo(),
+      ),
     )
+            ],
+          )
+          : Center(child: CircularProgressIndicator())
         );
   }
 
@@ -291,9 +289,7 @@ class _DevicesState extends State<Devices> {
                     ),
                     child: EditedText(
                         color: AppColors.blackText,
-                        text: GlobalVariables.canDelete == true
-                        ? 'Удалить устройство'
-                        : 'Хрен',
+                        text: 'Удалить устройство',
                         size: Dimensions.font10 * 3,
                         fontWeight: FontWeight.w500),
                   ),
