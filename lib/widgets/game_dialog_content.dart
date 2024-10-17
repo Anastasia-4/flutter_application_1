@@ -72,7 +72,7 @@ class _GameDialogContentState extends State<GameDialogContent> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              EditedText(color: AppColors.greyText, text: 'Таймер игры:', size: Dimensions.font10*4, fontWeight: FontWeight.w700),
+              EditedText(color: Theme.of(context).colorScheme.tertiary, text: 'Таймер игры:', size: Dimensions.font10*4, fontWeight: FontWeight.w700),
               SizedBox(height: Dimensions.margin10Height*4),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -159,7 +159,7 @@ class _GameDialogContentState extends State<GameDialogContent> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              EditedText(color: AppColors.greyText, text: 'Демо игра:', size: Dimensions.font10*4, fontWeight: FontWeight.w700),
+              EditedText(color: Theme.of(context).colorScheme.tertiary, text: 'Демо игра:', size: Dimensions.font10*4, fontWeight: FontWeight.w700),
               SizedBox(height: Dimensions.margin10Height*4),
               Row(
                 children: [

@@ -256,7 +256,7 @@ class _MainPageState extends State<MainPage> {
                                                           color: _selectedTile == index
                                                           ? AppColors.greyText
                                                           : Colors.transparent,
-                                                          width: Dimensions.border1),
+                                                          width: Dimensions.border1*3),
                                                         borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
                                                         color: Theme.of(context).colorScheme.primaryContainer,
                                                       ),
@@ -678,6 +678,9 @@ class _MainPageState extends State<MainPage> {
                         child: Container(
                       width: Dimensions.mainWidthContainer,
                       decoration: BoxDecoration(
+                        border: Border.all(
+                        color: Theme.of(context).colorScheme.tertiaryFixed,
+                        width: Dimensions.border1),
                         borderRadius: BorderRadius.circular(Dimensions.cornerRadius15),
                         color: Theme.of(context).colorScheme.primary,
                       ),
@@ -764,7 +767,7 @@ class _MainPageState extends State<MainPage> {
       barrierDismissible: false,
       context: context,
       builder: (context) => AlertDialog(
-            backgroundColor: AppColors.darkMainColor,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             content: DialogContent(nameController: nameController, numController: numController,),
             actions: [
               Row(

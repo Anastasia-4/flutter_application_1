@@ -6,10 +6,8 @@ import 'package:flutter_application_1/settings/sharedPreferencesHelper.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
 import 'package:flutter_application_1/utils/global_variables.dart';
-import 'package:flutter_application_1/widgets/dialog.dart';
 import 'package:flutter_application_1/widgets/dialog_content.dart';
 import 'package:flutter_application_1/widgets/edited_text.dart';
-import 'package:flutter_application_1/widgets/ip_dialog_content.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class Devices extends StatefulWidget {
@@ -36,14 +34,15 @@ class _DevicesState extends State<Devices> {
     numController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_){
       _getDb();
-      setState(() {});
     });
       
   }
 
   _getDb() async {
     currentDevicesCount = await _databaseService.getCount();
+    setState(() {
     isLoaded = true;
+    });
   }
 
   @override
@@ -58,9 +57,11 @@ class _DevicesState extends State<Devices> {
     return Scaffold(
         body: Padding(
       padding: EdgeInsets.only(left: Dimensions.margin10Width * 2.7),
-      child: Column(
-        children: [ isLoaded
-        ? SizedBox(
+      child: isLoaded
+      ?Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+           SizedBox(
             height: Dimensions.margin10Height * 10,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,8 +103,7 @@ class _DevicesState extends State<Devices> {
                 ))
               ],
             ),
-          )
-        : SizedBox(height: Dimensions.margin10Height * 10),
+          ),
           Expanded(
             child: Container(
               padding: EdgeInsets.only(
@@ -111,15 +111,19 @@ class _DevicesState extends State<Devices> {
                   left: Dimensions.margin10Width * 5.8,
                   right: Dimensions.margin10Width * 5.8),
               decoration: BoxDecoration(
+                border: Border.all(
+                        color: Theme.of(context).colorScheme.tertiaryFixed,
+                        width: Dimensions.border1),
                 borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(Dimensions.cornerRadius20)),
-                color: AppColors.darkMainColor,
+                color: Theme.of(context).colorScheme.primary
               ),
               child: _deviceInfo(),
             ),
           )
         ],
-      ),
+      )
+      : Center(child: CircularProgressIndicator())
     )
         );
   }
@@ -139,14 +143,14 @@ class _DevicesState extends State<Devices> {
                   Device device = snapshot.data![index];
                   return GestureDetector(
                       child: Container(
-                        margin: EdgeInsets.only(left: Dimensions.border1 * 2),
                         decoration: BoxDecoration(
                             border: selectedIndex == index
                                 ? (index == 0
                                     ? Border.symmetric(
                                         vertical: BorderSide(
                                             color: Colors.transparent,
-                                            width: Dimensions.border1))
+                                            width: Dimensions.border1
+                                            ))
                                     : Border(
                                         right: BorderSide(
                                             color: Colors.transparent,
@@ -170,12 +174,18 @@ class _DevicesState extends State<Devices> {
                         child: Container(
                           width: 200,
                           decoration: BoxDecoration(
+                            border: selectedIndex == index
+                            ? Border(top: BorderSide(color: Theme.of(context).colorScheme.tertiaryFixed,
+                                width: Dimensions.border1), right: BorderSide(color: Theme.of(context).colorScheme.tertiaryFixed,
+                                width: Dimensions.border1), left: BorderSide(color: Theme.of(context).colorScheme.tertiaryFixed,
+                                width: Dimensions.border1))
+                            : null,
                             borderRadius: BorderRadius.vertical(
                                 top:
                                     Radius.circular(Dimensions.cornerRadius20)),
                             color: selectedIndex == index
-                                ? AppColors.darkMainColor
-                                : AppColors.darkBgColor,
+                                ? Theme.of(context).colorScheme.primary
+                                : Theme.of(context).colorScheme.surface,
                           ),
                           child: Container(
                             alignment: Alignment.centerLeft,
@@ -183,8 +193,8 @@ class _DevicesState extends State<Devices> {
                                 left: Dimensions.margin10Width * 4.7),
                             child: EditedText(
                                 color: selectedIndex == index
-                                    ? AppColors.whiteText
-                                    : AppColors.greyText,
+                                    ? Theme.of(context).colorScheme.tertiaryContainer
+                                    : Theme.of(context).colorScheme.tertiary,
                                 text: device.name,
                                 size: Dimensions.font10 * 3.5,
                                 fontWeight: selectedIndex == index
@@ -215,7 +225,7 @@ class _DevicesState extends State<Devices> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 EditedText(
-                    color: AppColors.greyText,
+                    color: Theme.of(context).colorScheme.tertiary,
                     text: 'Ip устройства',
                     size: Dimensions.font10 * 3.5,
                     fontWeight: FontWeight.w700),
@@ -229,97 +239,44 @@ class _DevicesState extends State<Devices> {
                       width: Dimensions.margin10Width * 150,
                       height: Dimensions.margin10Height * 12.3,
                       decoration: BoxDecoration(
-                          color: AppColors.darkBgColor,
+                          color: Theme.of(context).colorScheme.primaryContainer,
                           borderRadius:
                               BorderRadius.circular(Dimensions.cornerRadius15),
                           border: Border.all(
                               color: AppColors.greyText,
                               width: Dimensions.border1)),
                       child: EditedText(
-                          color: AppColors.whiteText,
+                          color: Theme.of(context).colorScheme.tertiaryContainer,
                           text: deviceInfo.serialNum,
                           size: Dimensions.font10 * 3.5,
                           fontWeight: FontWeight.w500),
                     ),
-                    GestureDetector(
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: Dimensions.margin10Width * 33.5,
-                        height: Dimensions.margin10Height * 7,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.cornerRadius20),
-                          color: AppColors.yellowButtonColor,
-                        ),
-                        child: EditedText(
-                            color: AppColors.blackText,
-                            text: 'Редактировать',
-                            size: Dimensions.font10 * 3,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      onTap: () {
-                        setState(() {
-                          nameController.text = deviceInfo.name;
-                          numController.text =ipFormatter.maskText(deviceInfo.serialNum);
-                          Feedback.forTap(context);
-                        });
-                        updateDialog();
-                      },
-                    )
                   ],
                 ),
                 SizedBox(height: Dimensions.margin10Height * 6),
                 EditedText(
-                    color: AppColors.greyText,
+                    color: Theme.of(context).colorScheme.tertiary,
                     text: 'Ip телевизора для трансляции',
                     size: Dimensions.font10 * 3.5,
                     fontWeight: FontWeight.w700),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      padding:
-                          EdgeInsets.only(left: Dimensions.margin10Width * 4),
-                      width: Dimensions.margin10Width * 150,
-                      height: Dimensions.margin10Height * 12.3,
-                      decoration: BoxDecoration(
-                          color: AppColors.darkBgColor,
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.cornerRadius15),
-                          border: Border.all(
-                              color: AppColors.greyText,
-                              width: Dimensions.border1)),
-                      child: EditedText(
-                          color: AppColors.whiteText,
-                          text: "${deviceInfo.ipNum}",
-                          size: Dimensions.font10 * 3.5,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    GestureDetector(
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: Dimensions.margin10Width * 33.5,
-                        height: Dimensions.margin10Height * 7,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.cornerRadius20),
-                          color: AppColors.yellowButtonColor,
-                        ),
-                        child: EditedText(
-                            color: AppColors.blackText,
-                            text: 'Редактировать',
-                            size: Dimensions.font10 * 3,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      onTap: () {
-                        Feedback.forTap(context);
-                        IPDialog();
-                        setState(() {
-                        });
-                      },
-                    )
-                  ],
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding:
+                      EdgeInsets.only(left: Dimensions.margin10Width * 4),
+                  width: Dimensions.margin10Width * 150,
+                  height: Dimensions.margin10Height * 12.3,
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      borderRadius:
+                          BorderRadius.circular(Dimensions.cornerRadius15),
+                      border: Border.all(
+                          color: AppColors.greyText,
+                          width: Dimensions.border1)),
+                  child: EditedText(
+                      color: Theme.of(context).colorScheme.tertiaryContainer,
+                      text: "${deviceInfo.ipNum}",
+                      size: Dimensions.font10 * 3.5,
+                      fontWeight: FontWeight.w500),
                 ),
                 SizedBox(height: Dimensions.margin10Height * 6),
                 GestureDetector(
@@ -358,9 +315,9 @@ class _DevicesState extends State<Devices> {
           } else {
             return Center(
                 child: EditedText(
-                    color: AppColors.whiteText,
+                    color: Theme.of(context).colorScheme.tertiaryContainer,
                     text: 'Нет устройств',
-                    size: Dimensions.font10 * 3,
+                    size: Dimensions.font10 * 3.3,
                     fontWeight: FontWeight.w500));
           }
         });
@@ -370,7 +327,7 @@ class _DevicesState extends State<Devices> {
       barrierDismissible: false,
       context: context,
       builder: (context) => AlertDialog(
-            backgroundColor: AppColors.darkMainColor,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             content: DialogContent(nameController: nameController, numController: numController,),
             actions: [
               Row(
@@ -409,45 +366,6 @@ class _DevicesState extends State<Devices> {
               ),
             ],
           ));
-
-  Future<void> IPDialog() => showDialog(
-    barrierDismissible: false,
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.cornerRadius25)),
-      backgroundColor: AppColors.darkMainColor,
-      contentPadding: EdgeInsets.zero,
-      content: IpDialogContent(),
-      actions: [
-        GestureDetector(
-                    child: Container(
-                        alignment: Alignment.center,
-                        width: Dimensions.margin10Width * 38,
-                        height: Dimensions.margin10Height * 7,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                Dimensions.cornerRadius20),
-                            color: AppColors.yellowButtonColor),
-                        child: EditedText(
-                            color: AppColors.blackText,
-                            text: 'Сохранить',
-                            size: Dimensions.font10 * 3.3,
-                            fontWeight: FontWeight.w500)),
-                    onTap: () {
-                      if (GlobalVariables.selectedIP != -1) {
-                        setState(() {
-                          _databaseService.addIPDevice(selectedDevice, GlobalVariables.selectedIP_text);
-                          GlobalVariables.changeIP(-1);
-                      });
-                        Navigator.of(context).pop();
-                      }
-                    },
-                  ),
-      ],
-    );
-        }  
-    );
         
     Future<void> errorDelete() => showDialog(
       context: context,
@@ -478,47 +396,7 @@ class _DevicesState extends State<Devices> {
             ],
           ));
   
-  Future<void> updateDialog() => showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (context) => AlertDialog(
-            backgroundColor: AppColors.darkMainColor,
-            content: DialogContent(nameController: nameController, numController: numController,),
-            actions: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    child: Container(
-                        alignment: Alignment.center,
-                        width: Dimensions.margin10Width * 38,
-                        height: Dimensions.margin10Height * 7,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                Dimensions.cornerRadius20),
-                            color: AppColors.yellowButtonColor),
-                        child: EditedText(
-                            color: AppColors.blackText,
-                            text: 'Сохранить',
-                            size: Dimensions.font10 * 3.3,
-                            fontWeight: FontWeight.w500)),
-                    onTap: () {
-                      if (numController.text.isNotEmpty &&
-                          nameController.text.isNotEmpty && numController.text.length == 15) {
-                        _databaseService.updateDevice(selectedDevice,
-                            nameController.text, numController.text);
-                        setState(() {
-                          nameController.text = "";
-                          numController.text = "";
-                        });
-                        Navigator.of(context).pop();
-                      }
-                    },
-                  ),
-                ],
-              ),
-            ],
-          ));
+
 
 
   var ipFormatter = new MaskTextInputFormatter(
