@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
-import 'package:flutter_application_1/widgets/edited_check.dart';
 import 'package:flutter_application_1/widgets/edited_text.dart';
 import 'package:flutter_application_1/widgets/pay_check.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class Pay extends StatefulWidget {
   const Pay({super.key});
@@ -253,7 +250,7 @@ class _PayState extends State<Pay> {
                                   ),
                                   child: EditedText(
                                       color: AppColors.blackText,
-                                      text: '${value * 2000}' '\₽',
+                                      text: '${value * 2000}' '₽',
                                       size: Dimensions.font10 * 3.8,
                                       fontWeight: FontWeight.w700),
                                 ),
@@ -580,7 +577,7 @@ class _PayState extends State<Pay> {
                                         ),
                                         child: EditedText(
                                             color: AppColors.blackText,
-                                            text: '${bp_value * (2000 + list.where((x) => x == true).length * 400)}' '\₽',
+                                            text: '${bp_value * (2000 + list.where((x) => x == true).length * 400)}' '₽',
                                             size: Dimensions.font10 * 3.8,
                                             fontWeight: FontWeight.w700),
                                       ),

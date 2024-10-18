@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/services/database_service.dart';
 import 'package:flutter_application_1/services/device_model.dart';
-import 'package:flutter_application_1/settings/sharedPreferencesHelper.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
 import 'package:flutter_application_1/utils/global_variables.dart';
@@ -79,7 +77,7 @@ class _DevicesState extends State<Devices> {
                       borderRadius: BorderRadius.circular(
                           Dimensions.cornerRadius20),
                       color: (currentDevicesCount == finalDevicesCount)
-                          ? Color(0xFF89631A)
+                          ? const Color(0xFF89631A)
                           : AppColors.yellowButtonColor),
                   child: EditedText(
                       color: AppColors.blackText,
@@ -122,7 +120,7 @@ class _DevicesState extends State<Devices> {
     )
             ],
           )
-          : Center(child: CircularProgressIndicator())
+          : const Center(child: CircularProgressIndicator())
         );
   }
 
@@ -132,82 +130,80 @@ class _DevicesState extends State<Devices> {
         builder: (context, snapshot) {
           currentDevicesCount = snapshot.data?.length ?? 0;
           currentDevicesCount == 0 ? selectedDevice = -1 : selectedDevice = 0;
-          return Container(
-            child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: snapshot.data?.length ?? 0,
-                itemBuilder: (context, index) {
-                  Device device = snapshot.data![index];
-                  return GestureDetector(
+          return ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: snapshot.data?.length ?? 0,
+              itemBuilder: (context, index) {
+                Device device = snapshot.data![index];
+                return GestureDetector(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: selectedIndex == index
+                              ? (index == 0
+                                  ? Border.symmetric(
+                                      vertical: BorderSide(
+                                          color: Colors.transparent,
+                                          width: Dimensions.border1
+                                          ))
+                                  : Border(
+                                      right: BorderSide(
+                                          color: Colors.transparent,
+                                          width: Dimensions.border1)))
+                              : (index == 0
+                                  ? Border(
+                                      right: BorderSide(
+                                          color: (selectedIndex - index) == 1
+                                              ? Colors.transparent
+                                              : AppColors.greyText,
+                                          width: Dimensions.border1),
+                                      left: BorderSide(
+                                          color: AppColors.greyText,
+                                          width: Dimensions.border1))
+                                  : Border(
+                                      right: BorderSide(
+                                          color: (selectedIndex - index) == 1
+                                              ? Colors.transparent
+                                              : AppColors.greyText,
+                                          width: Dimensions.border1)))),
                       child: Container(
+                        width: 200,
                         decoration: BoxDecoration(
-                            border: selectedIndex == index
-                                ? (index == 0
-                                    ? Border.symmetric(
-                                        vertical: BorderSide(
-                                            color: Colors.transparent,
-                                            width: Dimensions.border1
-                                            ))
-                                    : Border(
-                                        right: BorderSide(
-                                            color: Colors.transparent,
-                                            width: Dimensions.border1)))
-                                : (index == 0
-                                    ? Border(
-                                        right: BorderSide(
-                                            color: (selectedIndex - index) == 1
-                                                ? Colors.transparent
-                                                : AppColors.greyText,
-                                            width: Dimensions.border1),
-                                        left: BorderSide(
-                                            color: AppColors.greyText,
-                                            width: Dimensions.border1))
-                                    : Border(
-                                        right: BorderSide(
-                                            color: (selectedIndex - index) == 1
-                                                ? Colors.transparent
-                                                : AppColors.greyText,
-                                            width: Dimensions.border1)))),
+                          border: selectedIndex == index
+                          ? Border(top: BorderSide(color: Theme.of(context).colorScheme.tertiaryFixed,
+                              width: Dimensions.border1), right: BorderSide(color: Theme.of(context).colorScheme.tertiaryFixed,
+                              width: Dimensions.border1), left: BorderSide(color: Theme.of(context).colorScheme.tertiaryFixed,
+                              width: Dimensions.border1))
+                          : null,
+                          borderRadius: BorderRadius.vertical(
+                              top:
+                                  Radius.circular(Dimensions.cornerRadius20)),
+                          color: selectedIndex == index
+                              ? Theme.of(context).colorScheme.primary
+                              : Theme.of(context).colorScheme.surface,
+                        ),
                         child: Container(
-                          width: 200,
-                          decoration: BoxDecoration(
-                            border: selectedIndex == index
-                            ? Border(top: BorderSide(color: Theme.of(context).colorScheme.tertiaryFixed,
-                                width: Dimensions.border1), right: BorderSide(color: Theme.of(context).colorScheme.tertiaryFixed,
-                                width: Dimensions.border1), left: BorderSide(color: Theme.of(context).colorScheme.tertiaryFixed,
-                                width: Dimensions.border1))
-                            : null,
-                            borderRadius: BorderRadius.vertical(
-                                top:
-                                    Radius.circular(Dimensions.cornerRadius20)),
-                            color: selectedIndex == index
-                                ? Theme.of(context).colorScheme.primary
-                                : Theme.of(context).colorScheme.surface,
-                          ),
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            margin: EdgeInsets.only(
-                                left: Dimensions.margin10Width * 4.7),
-                            child: EditedText(
-                                color: selectedIndex == index
-                                    ? Theme.of(context).colorScheme.tertiaryContainer
-                                    : Theme.of(context).colorScheme.tertiary,
-                                text: device.name,
-                                size: Dimensions.font10 * 3.5,
-                                fontWeight: selectedIndex == index
-                                    ? FontWeight.w700
-                                    : FontWeight.w400),
-                          ),
+                          alignment: Alignment.centerLeft,
+                          margin: EdgeInsets.only(
+                              left: Dimensions.margin10Width * 4.7),
+                          child: EditedText(
+                              color: selectedIndex == index
+                                  ? Theme.of(context).colorScheme.tertiaryContainer
+                                  : Theme.of(context).colorScheme.tertiary,
+                              text: device.name,
+                              size: Dimensions.font10 * 3.5,
+                              fontWeight: selectedIndex == index
+                                  ? FontWeight.w700
+                                  : FontWeight.w400),
                         ),
                       ),
-                      onTap: () {
-                        setState(() {
-                          selectedIndex = index;
-                        });
+                    ),
+                    onTap: () {
+                      setState(() {
+                        selectedIndex = index;
                       });
-                }),
-          );
+                    });
+              });
         });
   }
 
@@ -272,7 +268,7 @@ class _DevicesState extends State<Devices> {
                           width: Dimensions.border1)),
                   child: EditedText(
                       color: Theme.of(context).colorScheme.tertiaryContainer,
-                      text: "${deviceInfo.ipNum}",
+                      text: deviceInfo.ipNum,
                       size: Dimensions.font10 * 3.5,
                       fontWeight: FontWeight.w500),
                 ),
@@ -395,7 +391,7 @@ class _DevicesState extends State<Devices> {
 
 
 
-  var ipFormatter = new MaskTextInputFormatter(
+  var ipFormatter = MaskTextInputFormatter(
       mask: '###.###.###.###',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);

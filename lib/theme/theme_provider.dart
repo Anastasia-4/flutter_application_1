@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/settings/sharedPreferencesHelper.dart';
 import 'package:flutter_application_1/theme/theme.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider with ChangeNotifier{
   ThemeData _themeData = darkMode;

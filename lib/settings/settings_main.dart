@@ -5,7 +5,7 @@ import 'package:flutter_application_1/utils/dimensions.dart';
 import 'package:provider/provider.dart';
 
 class SettingsMain extends StatefulWidget {
-  SettingsMain({super.key});
+  const SettingsMain({super.key});
 
   @override
   State<SettingsMain> createState() => _SettingsMainState();
@@ -18,7 +18,6 @@ class _SettingsMainState extends State<SettingsMain> {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      //backgroundColor: AppColors.darkBgColor,
       drawer: AppDrawer(drawerProvider: drawerProvider),
       body: SafeArea(
           minimum: EdgeInsets.only(

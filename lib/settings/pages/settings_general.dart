@@ -63,51 +63,49 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                   child: Row(
                     mainAxisAlignment:  MainAxisAlignment.start,
                     children: [
-                      Container(
+                      SizedBox(
                         width: Dimensions.sectionTimeMargin,
                         child: EditedText(color: Theme.of(context).colorScheme.tertiary, text: 'Таймер по умолчанию:', size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
                       ),
-                      Container(
-                        child: Row(
-                          children: [
-                            GestureDetector(child: EditedCheck(text: '15', isChecked: Check15),onTap: () {
-                              setState(
-                                () {
-                                  Check15 = !Check15;
-                                  SharedPreferencesHelper.setBool("Check15", Check15);
-                                  Feedback.forTap(context);
-                                }
-                              );
-                            },),
-                            GestureDetector(child: EditedCheck(text: '30', isChecked: Check30),onTap: () {
-                              setState(
-                                () {
-                                  Check30 = !Check30;
-                                  SharedPreferencesHelper.setBool("Check30", Check30);
-                                  Feedback.forTap(context);
-                                } 
-                              );
-                            },),
-                            GestureDetector(child: EditedCheck(text: '45', isChecked: Check45),onTap: () {
-                              setState(
-                                () {
-                                  Check45 = !Check45;
-                                  SharedPreferencesHelper.setBool("Check45", Check45);
-                                  Feedback.forTap(context);
-                                } 
-                              );
-                            },),
-                            GestureDetector(child: EditedCheck(text: '60', isChecked: Check60),onTap: () {
-                              setState(
-                                () {
-                                  Check60 = !Check60;
-                                  SharedPreferencesHelper.setBool("Check60", Check60);
-                                  Feedback.forTap(context);
-                                } 
-                              );
-                            },),
-                          ],
-                        ),
+                      Row(
+                        children: [
+                          GestureDetector(child: EditedCheck(text: '15', isChecked: Check15),onTap: () {
+                            setState(
+                              () {
+                                Check15 = !Check15;
+                                SharedPreferencesHelper.setBool("Check15", Check15);
+                                Feedback.forTap(context);
+                              }
+                            );
+                          },),
+                          GestureDetector(child: EditedCheck(text: '30', isChecked: Check30),onTap: () {
+                            setState(
+                              () {
+                                Check30 = !Check30;
+                                SharedPreferencesHelper.setBool("Check30", Check30);
+                                Feedback.forTap(context);
+                              } 
+                            );
+                          },),
+                          GestureDetector(child: EditedCheck(text: '45', isChecked: Check45),onTap: () {
+                            setState(
+                              () {
+                                Check45 = !Check45;
+                                SharedPreferencesHelper.setBool("Check45", Check45);
+                                Feedback.forTap(context);
+                              } 
+                            );
+                          },),
+                          GestureDetector(child: EditedCheck(text: '60', isChecked: Check60),onTap: () {
+                            setState(
+                              () {
+                                Check60 = !Check60;
+                                SharedPreferencesHelper.setBool("Check60", Check60);
+                                Feedback.forTap(context);
+                              } 
+                            );
+                          },),
+                        ],
                       )
                     ],
                   ),
@@ -120,7 +118,7 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                   child: Row(
                     mainAxisAlignment:  MainAxisAlignment.start,
                     children: [
-                      Container(
+                      SizedBox(
                         width: Dimensions.sectionTimeMargin,
                         child: EditedText(color: Theme.of(context).colorScheme.tertiary, text: 'Запуск демо игры:', size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
                       ),
@@ -159,33 +157,31 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                   child: Row(
                     mainAxisAlignment:  MainAxisAlignment.start,
                     children: [
-                      Container(
+                      SizedBox(
                         width: Dimensions.sectionTimeMargin,
                         child: EditedText(color: Theme.of(context).colorScheme.tertiary, text: 'Отображать игры в устройстве:', size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
                       ),
-                      Container(
-                        child: Row(
-                          children: [
-                            GestureDetector(child: EditedCheck(text: 'Да', isChecked: ShowGames),onTap: () {
-                              setState(
-                                () {
-                                 ShowGames = true;
-                                 SharedPreferencesHelper.setBool("Games", true);
-                                 Feedback.forTap(context);
-                                }  
-                              );
-                            },),
-                            GestureDetector(child: EditedCheck(text: 'Нет', isChecked: !ShowGames),onTap: () {
-                              setState(
-                                () {
-                                  ShowGames = false;
-                                  SharedPreferencesHelper.setBool("Games", false);  
-                                  Feedback.forTap(context);
-                                }
-                              );
-                            },),
-                          ],
-                        ),
+                      Row(
+                        children: [
+                          GestureDetector(child: EditedCheck(text: 'Да', isChecked: ShowGames),onTap: () {
+                            setState(
+                              () {
+                               ShowGames = true;
+                               SharedPreferencesHelper.setBool("Games", true);
+                               Feedback.forTap(context);
+                              }  
+                            );
+                          },),
+                          GestureDetector(child: EditedCheck(text: 'Нет', isChecked: !ShowGames),onTap: () {
+                            setState(
+                              () {
+                                ShowGames = false;
+                                SharedPreferencesHelper.setBool("Games", false);  
+                                Feedback.forTap(context);
+                              }
+                            );
+                          },),
+                        ],
                       )
                     ],
                   ),
@@ -198,39 +194,37 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
                   child: Row(
                     mainAxisAlignment:  MainAxisAlignment.start,
                     children: [
-                      Container(
+                      SizedBox(
                         width: Dimensions.sectionTimeMargin,
                         child: EditedText(color: Theme.of(context).colorScheme.tertiary, text: 'Тема приложения:', size: Dimensions.font10*3.5, fontWeight: FontWeight.w700),
                       ),
-                      Container(
-                        child: Row(
-                          children: [
-                            GestureDetector(child: EditedCheck(text: 'Темная', isChecked: _Theme),onTap: () async {
-                              setState(
-                                () {
-                                  _Theme = true;
-                                  SharedPreferencesHelper.setBool("Theme", true);
-                                  Feedback.forTap(context);
-                                },
-                              );
-                              Provider.of<ThemeProvider>(context, listen: false).toggleTheme(_Theme);
-                              
-
-                            },),
-                            SizedBox(width: Dimensions.margin10Width*7.5),
-                            GestureDetector(child: EditedCheck(text: 'Светлая', isChecked: !_Theme),onTap: () async {
-                              setState(
-                                () {
-                                  _Theme = false;
-                                  SharedPreferencesHelper.setBool("Theme", false);
-                                  Feedback.forTap(context);
-                                },
-                              );
-                              Provider.of<ThemeProvider>(context, listen: false).toggleTheme(_Theme);
-                              
-                            },),
-                          ],
-                        ),
+                      Row(
+                        children: [
+                          GestureDetector(child: EditedCheck(text: 'Темная', isChecked: _Theme),onTap: () async {
+                            setState(
+                              () {
+                                _Theme = true;
+                                SharedPreferencesHelper.setBool("Theme", true);
+                                Feedback.forTap(context);
+                              },
+                            );
+                            Provider.of<ThemeProvider>(context, listen: false).toggleTheme(_Theme);
+                            
+                      
+                          },),
+                          SizedBox(width: Dimensions.margin10Width*7.5),
+                          GestureDetector(child: EditedCheck(text: 'Светлая', isChecked: !_Theme),onTap: () async {
+                            setState(
+                              () {
+                                _Theme = false;
+                                SharedPreferencesHelper.setBool("Theme", false);
+                                Feedback.forTap(context);
+                              },
+                            );
+                            Provider.of<ThemeProvider>(context, listen: false).toggleTheme(_Theme);
+                            
+                          },),
+                        ],
                       )
                     ],
                   ),

@@ -4,9 +4,7 @@ class SharedPreferencesHelper {
   static SharedPreferences? _sharedPreferences;
 
   static Future<void> init() async {
-    if (_sharedPreferences == null) {
-      _sharedPreferences = await SharedPreferences.getInstance();
-    }
+    _sharedPreferences ??= await SharedPreferences.getInstance();
   }
 
   // To set a string value

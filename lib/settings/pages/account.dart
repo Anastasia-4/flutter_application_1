@@ -3,7 +3,6 @@ import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
 import 'package:flutter_application_1/widgets/edited_text.dart';
 import 'package:flutter_application_1/widgets/edited_textfield.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class Account extends StatefulWidget {
   const Account({super.key});

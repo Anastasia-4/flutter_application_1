@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/settings/sharedPreferencesHelper.dart';
 import 'package:flutter_application_1/utils/colors.dart';
@@ -201,7 +200,7 @@ class _GameDialogContentState extends State<GameDialogContent> {
               ],),
             ],
           ),
-          SizedBox(),
+          const SizedBox(),
         ],
       ),
     );

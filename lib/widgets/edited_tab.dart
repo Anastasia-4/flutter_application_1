@@ -15,9 +15,6 @@ class EditedTab extends StatelessWidget {
       padding: EdgeInsets.only(left: Dimensions.margin10Width * 2.5),
       height: Dimensions.margin10Height * 10.5,
       width: Dimensions.margin10Width * 32.4,
-      /*decoration: BoxDecoration(
-          border: Border.symmetric(
-              vertical: BorderSide(color: AppColors.greyText))),*/
       child: EditedText(
           color: AppColors.whiteText,
           text: text == ''

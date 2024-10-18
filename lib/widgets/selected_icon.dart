@@ -6,11 +6,11 @@ class SelectedIcon extends StatelessWidget {
   final String image;
   final double size;
   final isSelected;
-  SelectedIcon({
-    Key? key,
+  const SelectedIcon({
+    super.key,
     required this.size,
     required this.image, 
-    this.isSelected = false,}) : super(key: key);
+    this.isSelected = false,});
 
   @override
   Widget build(BuildContext context) {

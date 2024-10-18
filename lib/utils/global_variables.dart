@@ -12,12 +12,4 @@ class GlobalVariables {
     static changeTimer(int value){
     selectedTimer = value;
   }
-
-  static changeIP(int value){
-    selectedIP = value;
-  }
-
-  static changeIP_text(String value){
-    selectedIP_text = value;
-  }
 }

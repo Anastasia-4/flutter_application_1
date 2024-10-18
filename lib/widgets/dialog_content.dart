@@ -46,7 +46,7 @@ class DialogContent extends StatelessWidget {
                   text: "Название устройства",
                   size: Dimensions.font10 * 3.5,
                   fontWeight: FontWeight.w700),
-              Container(
+              SizedBox(
                 width: Dimensions.margin10Width * 131.6,
                 height: Dimensions.margin10Height * 10.8,
                 child: TextFormField(
@@ -91,7 +91,7 @@ class DialogContent extends StatelessWidget {
                   text: "Ip устройства",
                   size: Dimensions.font10 * 3.5,
                   fontWeight: FontWeight.w700),
-              Container(
+              SizedBox(
                 width: Dimensions.margin10Width * 131.6,
                 height: Dimensions.margin10Height * 10.8,
                 child: TextFormField(
@@ -133,7 +133,7 @@ class DialogContent extends StatelessWidget {
     );
   }
 
-    var ipFormatter = new MaskTextInputFormatter(
+    var ipFormatter = MaskTextInputFormatter(
       mask: '###.###.###.###',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);

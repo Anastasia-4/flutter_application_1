@@ -101,6 +101,6 @@ class DatabaseService {
     final db = await database;
     var x = await db.rawQuery('SELECT COUNT (*) from $_devicesTableName');
     int count = Sqflite.firstIntValue(x) ?? 0;
-    return count as int;
+    return count;
 }
 }

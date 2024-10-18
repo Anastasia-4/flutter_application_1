@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
-import 'package:flutter_application_1/widgets/edited_text.dart';
 
 class PayCheck extends StatefulWidget {
   dynamic isChecked;

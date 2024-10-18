@@ -1,12 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/home/main_page.dart';
 import 'package:flutter_application_1/provider/drawerProvider.dart';
 import 'package:flutter_application_1/settings/drawer_menu.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/dimensions.dart';
 import 'package:flutter_application_1/widgets/edited_text.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class AppDrawer extends StatefulWidget {

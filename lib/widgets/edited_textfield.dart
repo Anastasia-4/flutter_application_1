@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/settings/sharedPreferencesHelper.dart';
@@ -27,22 +26,26 @@ class _EditedTextfieldState extends State<EditedTextfield> {
     @override
   void initState() {
     super.initState();
-    if (SharedPreferencesHelper.getString('name') != null )
-    _isNameValid = true;
-    else
-    _isNameValid = false;
-    if (SharedPreferencesHelper.getString('email') != null)
-    _isEmailValid = true;
-    else
-    _isEmailValid = false;
-    if (SharedPreferencesHelper.getString('number') != null)
-    _isNumberValid = true;
-    else
-    _isNumberValid = false;
-    if (SharedPreferencesHelper.getString('id') != null)
-    _isIdValid = true;
-    else
-    _isIdValid = false;
+    if (SharedPreferencesHelper.getString('name') != null ) {
+      _isNameValid = true;
+    } else {
+      _isNameValid = false;
+    }
+    if (SharedPreferencesHelper.getString('email') != null) {
+      _isEmailValid = true;
+    } else {
+      _isEmailValid = false;
+    }
+    if (SharedPreferencesHelper.getString('number') != null) {
+      _isNumberValid = true;
+    } else {
+      _isNumberValid = false;
+    }
+    if (SharedPreferencesHelper.getString('id') != null) {
+      _isIdValid = true;
+    } else {
+      _isIdValid = false;
+    }
   }
 
   onNameChanged(String name) {
@@ -52,8 +55,9 @@ class _EditedTextfieldState extends State<EditedTextfield> {
     if(regex.hasMatch(name) && name.isNotEmpty)
     {_isNameValid = true;
     SharedPreferencesHelper.setString("name", name);}
-    else
-    _isNameValid = false;
+    else {
+      _isNameValid = false;
+    }
     });
   }
 
@@ -64,8 +68,9 @@ class _EditedTextfieldState extends State<EditedTextfield> {
     if(regex.hasMatch(name) && name.length>=8)
     {_isEmailValid = true;
     SharedPreferencesHelper.setString("email", name);}
-    else
-    _isEmailValid = false;
+    else {
+      _isEmailValid = false;
+    }
     });
   }
 
@@ -74,8 +79,9 @@ class _EditedTextfieldState extends State<EditedTextfield> {
     if(name.length == 10)
     {_isNumberValid = true;
     SharedPreferencesHelper.setString("number", name);}
-    else
-    _isNumberValid = false;
+    else {
+      _isNumberValid = false;
+    }
     });
   }
 
@@ -84,8 +90,9 @@ class _EditedTextfieldState extends State<EditedTextfield> {
     if(name.length>=5)
     {_isIdValid = true;
     SharedPreferencesHelper.setString("id", name);}
-    else
-    _isIdValid = false;
+    else {
+      _isIdValid = false;
+    }
     });
   }
 
@@ -103,7 +110,7 @@ class _EditedTextfieldState extends State<EditedTextfield> {
                 text: "ФИО",
                 size: Dimensions.font10 * 3.5,
                 fontWeight: FontWeight.w700),
-            Container(
+            SizedBox(
               width: Dimensions.margin10Width * 131.6,
               height: Dimensions.margin10Height * 10.8,
               child: TextFormField(
@@ -160,7 +167,7 @@ class _EditedTextfieldState extends State<EditedTextfield> {
                 text: "Email",
                 size: Dimensions.font10 * 3.5,
                 fontWeight: FontWeight.w700),
-            Container(
+            SizedBox(
               width: Dimensions.margin10Width * 131.6,
               height: Dimensions.margin10Height * 10.8,
               child: TextFormField(
@@ -217,7 +224,7 @@ class _EditedTextfieldState extends State<EditedTextfield> {
                 text: "Телефон",
                 size: Dimensions.font10 * 3.5,
                 fontWeight: FontWeight.w700),
-            Container(
+            SizedBox(
               width: Dimensions.margin10Width * 131.6,
               height: Dimensions.margin10Height * 10.8,
               child: TextFormField(
@@ -271,7 +278,7 @@ class _EditedTextfieldState extends State<EditedTextfield> {
                 text: "Телеграм id",
                 size: Dimensions.font10 * 3.5,
                 fontWeight: FontWeight.w700),
-            Container(
+            SizedBox(
               width: Dimensions.margin10Width * 131.6,
               height: Dimensions.margin10Height * 10.8,
               child: TextFormField(
@@ -321,12 +328,12 @@ class _EditedTextfieldState extends State<EditedTextfield> {
     );
   }
 
-var numberFormatter = new MaskTextInputFormatter(
+var numberFormatter = MaskTextInputFormatter(
   mask: '+7 (###) ###-##-##', 
   filter: { "#": RegExp(r'[0-9]') },
   type: MaskAutoCompletionType.lazy
 );
-var idFormatter = new MaskTextInputFormatter(
+var idFormatter = MaskTextInputFormatter(
   mask: '@################################', 
   filter: { "#": RegExp(r'[a-z1-9\_]') },
   type: MaskAutoCompletionType.lazy

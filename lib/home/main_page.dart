@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_application_1/settings/sharedPreferencesHelper.dart';
-//import 'package:flutter/services.dart';
 import 'package:flutter_application_1/utils/global_variables.dart';
 import 'package:flutter_application_1/services/database_service.dart';
 import 'package:flutter_application_1/services/device_model.dart';
@@ -26,9 +24,8 @@ class _MainPageState extends State<MainPage> {
   late TextEditingController numController;
   final DatabaseService _databaseService = DatabaseService.instance;
   int _selectedTile = 0;
-  late var stopwatches = List.generate(currentDevicesCount, (index) => Stopwatch());
-  late var timers = List.generate(currentDevicesCount, (index) => Timer(Duration(), () => {}));
-  late var durations = List.generate(currentDevicesCount, (index) => Duration());
+  late var timers = List.generate(currentDevicesCount, (index) => Timer(const Duration(), () => {}));
+  late var durations = List.generate(currentDevicesCount, (index) => const Duration());
   late var pause = List.generate(currentDevicesCount, (index) => false);
   int finalDevicesCount = 5;
   late int currentDevicesCount = 0;
@@ -57,9 +54,8 @@ class _MainPageState extends State<MainPage> {
 
   _getDb() async {
     currentDevicesCount = await _databaseService.getCount();
-    stopwatches = List.generate(currentDevicesCount, (index) => Stopwatch());
-    timers = List.generate(currentDevicesCount, (index) => Timer(Duration(), () => {}));
-    durations = List.generate(currentDevicesCount, (index) => Duration());
+    timers = List.generate(currentDevicesCount, (index) => Timer(const Duration(), () => {}));
+    durations = List.generate(currentDevicesCount, (index) => const Duration());
     pause = List.generate(currentDevicesCount, (index) => false);
     setState(() {
     isLoaded = true;
@@ -68,9 +64,8 @@ class _MainPageState extends State<MainPage> {
 
   addNew() async {
     currentDevicesCount = await _databaseService.getCount();
-    stopwatches.addAll(List.generate(currentDevicesCount - stopwatches.length, (index) => Stopwatch()));
-    timers.addAll(List.generate(currentDevicesCount - timers.length, (index) => Timer(Duration(), () => {})));
-    durations.addAll(List.generate(currentDevicesCount - durations.length, (index) => Duration()));
+    timers.addAll(List.generate(currentDevicesCount - timers.length, (index) => Timer(const Duration(), () => {})));
+    durations.addAll(List.generate(currentDevicesCount - durations.length, (index) => const Duration()));
     pause.addAll(List.generate(currentDevicesCount - pause.length, (index) => false));
     setState(() {
     isLoaded = true;
@@ -78,12 +73,11 @@ class _MainPageState extends State<MainPage> {
   }
 
   void handleStop() {
-      stopwatches[_selectedTile].stop();
       timers[_selectedTile].cancel();
   }
 
   void reset() {
-    durations[_selectedTile] = Duration();
+    durations[_selectedTile] = const Duration();
     pause[_selectedTile] = false;
   }
 
@@ -99,12 +93,12 @@ class _MainPageState extends State<MainPage> {
       if (plus) {
         setState(() {
           if(durations[_selectedTile].inMinutes <= 75){
-          durations[_selectedTile] += Duration(minutes: 15);
+          durations[_selectedTile] += const Duration(minutes: 15);
         }
         });
       } else {
         setState(() {
-          durations[_selectedTile] -= Duration(minutes: 15);
+          durations[_selectedTile] -= const Duration(minutes: 15);
           if(durations[_selectedTile].inMilliseconds <= 0){
             handleStop();
             reset();
@@ -116,8 +110,7 @@ class _MainPageState extends State<MainPage> {
 
   void start(int index) {
     if (timers[index].isActive == false) {
-      timers[index] = Timer.periodic(Duration(seconds: 1), (_) => subtractTime(index));
-      print(index);
+      timers[index] = Timer.periodic(const Duration(seconds: 1), (_) => subtractTime(index));
     }
   }
 
@@ -186,7 +179,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: currentDevicesCount == stopwatches.length
+        body: currentDevicesCount == durations.length
         ? SafeArea(
             minimum: EdgeInsets.only(
                 left: Dimensions.margin10Width * 2.7,
@@ -220,214 +213,208 @@ class _MainPageState extends State<MainPage> {
                       ),
                     ),
                     Expanded(
-                        child: Expanded(
-                            child: SingleChildScrollView(
-                                child: FutureBuilder(
-                                    future: _databaseService.getDevice(),
-                                    builder: (context, snapshot) {
-                                      return Column(
-                                        children: [
-                                          Container(
-                                            child: ListView.builder(
-                                              physics:NeverScrollableScrollPhysics(),
-                                              shrinkWrap: true,
-                                              itemCount:snapshot.data?.length ?? 0,
-                                              itemBuilder:(BuildContext context,int index) {
-                                                currentDevicesCount = snapshot.data?.length ?? 0;
-                                                if (snapshot.hasData && currentDevicesCount != 0){
-                                                Device device =snapshot.data![index];
-                                                if (currentDevicesCount == stopwatches.length){
-                                                  if (durations[index].inMilliseconds != 0 && pause[index] == false) {
-                                                    start(index);
-                                                  }
-                                                }
-                                                return GestureDetector(
-                                                  child: Container(
-                                                  //key: ValueKey(device.id),
-                                                      height: Dimensions.devicesListHeight,
-                                                      margin: EdgeInsets.only(
-                                                          left: Dimensions.margin10Width *2,
-                                                          right: Dimensions.margin10Width *2,
-                                                          bottom: Dimensions.margin10Height *5.9),
-                                                      padding: EdgeInsets.only(
-                                                          left: Dimensions.margin10Width *1.5),
-                                                      decoration: BoxDecoration(
-                                                        border: Border.all(
-                                                          color: _selectedTile == index
-                                                          ? AppColors.greyText
-                                                          : Colors.transparent,
-                                                          width: Dimensions.border1*3),
-                                                        borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
-                                                        color: Theme.of(context).colorScheme.primaryContainer,
-                                                      ),
-                                                      child: Row(
-                                                        mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                                                        children: [
-                                                          Column(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment.center,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment.start,
-                                                              children: [
-                                                                Container(
-                                                                  width: Dimensions.margin10Width *25,
-                                                                  height: Dimensions.margin10Height *8.2,
-                                                                  decoration: BoxDecoration(
-                                                                      border: Border(
-                                                                          bottom:BorderSide(color: AppColors.darkerGreyText))),
-                                                                  child: EditedText(
-                                                                      color: Theme.of(context).colorScheme.tertiary,
-                                                                      text: device.name,
-                                                                      size: Dimensions.font10 *3.5,
-                                                                      fontWeight:FontWeight.w500),
-                                                                ),
-                                                                Container(alignment:Alignment.center,
-                                                                  width: Dimensions.margin10Width *20,
-                                                                  height: Dimensions.margin10Height *8.2,
-                                                                  child: currentDevicesCount == stopwatches.length
-                                                                  ? EditedText(
-                                                                      color: durations[index].inSeconds < 300 &&durations[index].inSeconds > 0
-                                                                          ? AppColors.redButtonColor
-                                                                          : Theme.of(context).colorScheme.tertiary,
-                                                                      text: returnFormattedText(index) =="00:00"
-                                                                          ? "--:--"
-                                                                          : returnFormattedText(index),
-                                                                      size: Dimensions.font10 *7,
-                                                                      fontWeight: FontWeight.w900)
-                                                                  : SizedBox()
-                                                                ),
-                                                              ]),
-                                                          Container(
-                                                            width: Dimensions.margin10Width *8.3,
-                                                            child: RotatedBox(
-                                                              quarterTurns: 3,
-                                                              child: Row(
-                                                                mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                                                                children: [
-                                                                  Column(mainAxisAlignment:MainAxisAlignment.spaceBetween,
-                                                                    children: [
-                                                                      Transform.flip(
-                                                                        flipX:true,
-                                                                        child: Image.asset(
-                                                                          height:Dimensions.margin10Width * 4.7,
-                                                                          width:Dimensions.margin10Height * 2.9,
-                                                                          'assets/image/controller.png',
-                                                                          fit: BoxFit.fill,
-                                                                        ),
-                                                                      ),
-                                                                      EditedText(
-                                                                          color: Theme.of(context).colorScheme.tertiary,
-                                                                          text:'100',
-                                                                          size: Dimensions.font10 *2.5,
-                                                                          fontWeight:FontWeight.w700),
-                                                                    ],
-                                                                  ),
-                                                                  Column(mainAxisAlignment:MainAxisAlignment.spaceBetween,
-                                                                    children: [
-                                                                      Image.asset(
-                                                                        height: Dimensions.margin10Width *3.8,
-                                                                        width: Dimensions.margin10Height *5.6,
-                                                                        'assets/image/VRheadset.png',
-                                                                        fit: BoxFit.contain,
-                                                                      ),
-                                                                      EditedText(
-                                                                          color: Theme.of(context).colorScheme.tertiary,
-                                                                          text:'100',
-                                                                          size: Dimensions.font10 *2.5,
-                                                                          fontWeight:FontWeight.w700),
-                                                                    ],
-                                                                  ),
-                                                                  Column(
-                                                                    mainAxisAlignment:MainAxisAlignment.spaceBetween,
-                                                                    children: [
-                                                                      Image.asset(
-                                                                        height: Dimensions.margin10Width *4.7,
-                                                                        width: Dimensions.margin10Height *2.9,
-                                                                        'assets/image/controller.png',
-                                                                        fit: BoxFit.fill,
-                                                                      ),
-                                                                      EditedText(
-                                                                          color: Theme.of(context).colorScheme.tertiary,
-                                                                          text:'100',
-                                                                          size: Dimensions.font10 *2.5,
-                                                                          fontWeight:FontWeight.w700),
-                                                                    ],
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          )
-                                                        ],
-                                                      )),
-                                                  onTap: () {
-                                                    Feedback.forTap(context);
-                                                    setState(() {
-                                                      _selectedTile = index;
-                                                    });
-                                                  },
-                                                );
-                                                }
-                                              },
-                                            ),
-                                          ),
-                                          Container(
-                                            child: currentDevicesCount < finalDevicesCount
-                                            ? Container(
-                                              height: Dimensions.margin10Height *16.5,
-                                              width:Dimensions.devicesListWidth,
-                                              margin: EdgeInsets.only(
-                                                  left:Dimensions.margin10Width *2,
-                                                  right:Dimensions.margin10Width *2,
-                                                  bottom:Dimensions.margin10Height *5.9),
-                                              padding: EdgeInsets.only(
-                                                  left:Dimensions.margin10Width *1.5),
-                                              decoration: BoxDecoration(
+                        child: SingleChildScrollView(
+                            child: FutureBuilder(
+                                future: _databaseService.getDevice(),
+                                builder: (context, snapshot) {
+                                  return Column(
+                                    children: [
+                                      ListView.builder(
+                                        physics:const NeverScrollableScrollPhysics(),
+                                        shrinkWrap: true,
+                                        itemCount:snapshot.data?.length ?? 0,
+                                        itemBuilder:(BuildContext context,int index) {
+                                          currentDevicesCount = snapshot.data?.length ?? 0;
+                                          Device device =snapshot.data![index];
+                                          if (currentDevicesCount == durations.length){
+                                            if (durations[index].inMilliseconds != 0 && pause[index] == false) {
+                                              start(index);
+                                            }
+                                          }
+                                          return GestureDetector(
+                                            child: Container(
+                                                height: Dimensions.devicesListHeight,
+                                                margin: EdgeInsets.only(
+                                                    left: Dimensions.margin10Width *2,
+                                                    right: Dimensions.margin10Width *2,
+                                                    bottom: Dimensions.margin10Height *5.9),
+                                                padding: EdgeInsets.only(
+                                                    left: Dimensions.margin10Width *1.5),
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                    color: _selectedTile == index
+                                                    ? AppColors.greyText
+                                                    : Colors.transparent,
+                                                    width: Dimensions.border1*3),
                                                   borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
-                                                  color: Theme.of(context).colorScheme.primaryContainer),
-                                              child: GestureDetector(
-                                                child: Column(
+                                                  color: Theme.of(context).colorScheme.primaryContainer,
+                                                ),
+                                                child: Row(
                                                   mainAxisAlignment:MainAxisAlignment.spaceEvenly,
                                                   children: [
-                                                    EditedText(
-                                                        color: Theme.of(context).colorScheme.tertiary,
-                                                        text: 'Не активировано',
-                                                        size:Dimensions.font10 *3.5,
-                                                        fontWeight:FontWeight.w500),
-                                                    Container(
-                                                      alignment:Alignment.center,
-                                                      height: Dimensions.margin10Height *5.7,
-                                                      width: Dimensions.margin10Width *20,
-                                                      decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(Dimensions.cornerRadius20 /2),
-                                                          color: AppColors.yellowButtonColor),
-                                                      child: EditedText(
-                                                          color: AppColors.blackText,
-                                                          text: 'Активировать',
-                                                          size: Dimensions.font10 *2.5,
-                                                          fontWeight:FontWeight.w500),
+                                                    Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment.center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment.start,
+                                                        children: [
+                                                          Container(
+                                                            width: Dimensions.margin10Width *25,
+                                                            height: Dimensions.margin10Height *8.2,
+                                                            decoration: const BoxDecoration(
+                                                                border: Border(
+                                                                    bottom:BorderSide(color: AppColors.darkerGreyText))),
+                                                            child: EditedText(
+                                                                color: Theme.of(context).colorScheme.tertiary,
+                                                                text: device.name,
+                                                                size: Dimensions.font10 *3.5,
+                                                                fontWeight:FontWeight.w500),
+                                                          ),
+                                                          Container(alignment:Alignment.center,
+                                                            width: Dimensions.margin10Width *20,
+                                                            height: Dimensions.margin10Height *8.2,
+                                                            child: currentDevicesCount == durations.length
+                                                            ? EditedText(
+                                                                color: durations[index].inSeconds < 300 &&durations[index].inSeconds > 0
+                                                                    ? AppColors.redButtonColor
+                                                                    : Theme.of(context).colorScheme.tertiary,
+                                                                text: returnFormattedText(index) =="00:00"
+                                                                    ? "--:--"
+                                                                    : returnFormattedText(index),
+                                                                size: Dimensions.font10 *7,
+                                                                fontWeight: FontWeight.w900)
+                                                            : const SizedBox()
+                                                          ),
+                                                        ]),
+                                                    SizedBox(
+                                                      width: Dimensions.margin10Width *8.3,
+                                                      child: RotatedBox(
+                                                        quarterTurns: 3,
+                                                        child: Row(
+                                                          mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                                                          children: [
+                                                            Column(mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                                                              children: [
+                                                                Transform.flip(
+                                                                  flipX:true,
+                                                                  child: Image.asset(
+                                                                    height:Dimensions.margin10Width * 4.7,
+                                                                    width:Dimensions.margin10Height * 2.9,
+                                                                    'assets/image/controller.png',
+                                                                    fit: BoxFit.fill,
+                                                                  ),
+                                                                ),
+                                                                EditedText(
+                                                                    color: Theme.of(context).colorScheme.tertiary,
+                                                                    text:'100',
+                                                                    size: Dimensions.font10 *2.5,
+                                                                    fontWeight:FontWeight.w700),
+                                                              ],
+                                                            ),
+                                                            Column(mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                                                              children: [
+                                                                Image.asset(
+                                                                  height: Dimensions.margin10Width *3.8,
+                                                                  width: Dimensions.margin10Height *5.6,
+                                                                  'assets/image/VRheadset.png',
+                                                                  fit: BoxFit.contain,
+                                                                ),
+                                                                EditedText(
+                                                                    color: Theme.of(context).colorScheme.tertiary,
+                                                                    text:'100',
+                                                                    size: Dimensions.font10 *2.5,
+                                                                    fontWeight:FontWeight.w700),
+                                                              ],
+                                                            ),
+                                                            Column(
+                                                              mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                                                              children: [
+                                                                Image.asset(
+                                                                  height: Dimensions.margin10Width *4.7,
+                                                                  width: Dimensions.margin10Height *2.9,
+                                                                  'assets/image/controller.png',
+                                                                  fit: BoxFit.fill,
+                                                                ),
+                                                                EditedText(
+                                                                    color: Theme.of(context).colorScheme.tertiary,
+                                                                    text:'100',
+                                                                    size: Dimensions.font10 *2.5,
+                                                                    fontWeight:FontWeight.w700),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
                                                     )
                                                   ],
-                                                ),
-                                                onTap: () {
-                                                  setState(() {
-                                                    nameController.text = "";
-                                                    numController.text = "";
-                                                  });
-                                                  if (currentDevicesCount == finalDevicesCount){
-                                                    null;
-                                                  } else {
-                                                    Feedback.forTap(context);
-                                                    openDialog().then((_) => {addNew()});
-                                                  }
-                                                },
-                                              ))
-                                          : Container(), 
-                                          )
-                                          
-                                          
-                                        ],
-                                      );
-                                    })))),
+                                                )),
+                                            onTap: () {
+                                              Feedback.forTap(context);
+                                              setState(() {
+                                                _selectedTile = index;
+                                              });
+                                            },
+                                          );
+                                        },
+                                      ),
+                                      Container(
+                                        child: currentDevicesCount < finalDevicesCount
+                                        ? Container(
+                                          height: Dimensions.margin10Height *16.5,
+                                          width:Dimensions.devicesListWidth,
+                                          margin: EdgeInsets.only(
+                                              left:Dimensions.margin10Width *2,
+                                              right:Dimensions.margin10Width *2,
+                                              bottom:Dimensions.margin10Height *5.9),
+                                          padding: EdgeInsets.only(
+                                              left:Dimensions.margin10Width *1.5),
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(Dimensions.cornerRadius20),
+                                              color: Theme.of(context).colorScheme.primaryContainer),
+                                          child: GestureDetector(
+                                            child: Column(
+                                              mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                EditedText(
+                                                    color: Theme.of(context).colorScheme.tertiary,
+                                                    text: 'Не активировано',
+                                                    size:Dimensions.font10 *3.5,
+                                                    fontWeight:FontWeight.w500),
+                                                Container(
+                                                  alignment:Alignment.center,
+                                                  height: Dimensions.margin10Height *5.7,
+                                                  width: Dimensions.margin10Width *20,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.circular(Dimensions.cornerRadius20 /2),
+                                                      color: AppColors.yellowButtonColor),
+                                                  child: EditedText(
+                                                      color: AppColors.blackText,
+                                                      text: 'Активировать',
+                                                      size: Dimensions.font10 *2.5,
+                                                      fontWeight:FontWeight.w500),
+                                                )
+                                              ],
+                                            ),
+                                            onTap: () {
+                                              setState(() {
+                                                nameController.text = "";
+                                                numController.text = "";
+                                              });
+                                              if (currentDevicesCount == finalDevicesCount){
+                                                null;
+                                              } else {
+                                                Feedback.forTap(context);
+                                                openDialog().then((_) => {addNew()});
+                                              }
+                                            },
+                                          ))
+                                      : Container(), 
+                                      )
+                                      
+                                      
+                                    ],
+                                  );
+                                }))),
                     GestureDetector(
                         child: Container(
                             margin: EdgeInsets.only(
@@ -460,12 +447,12 @@ class _MainPageState extends State<MainPage> {
                               ),
                             )),
                         onTap: () {
-                          if (durations.where((duration) => duration.inMilliseconds != 0).toList().length == 0){
+                          if (durations.where((duration) => duration.inMilliseconds != 0).toList().isEmpty){
                             GlobalVariables.change(true);
                               setState(() {
                               isLoaded = false;
                               });
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsMain())).then((_) => {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsMain())).then((_) => {
                               _getDb(),
                             });
                           }else{
@@ -473,7 +460,7 @@ class _MainPageState extends State<MainPage> {
                               setState(() {
                               isLoaded = false;
                               });
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsMain())).then((_) => {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsMain())).then((_) => {
                               addNew(),
                             });
                           }
@@ -692,21 +679,21 @@ class _MainPageState extends State<MainPage> {
                                 crossAxisCount: 5,
                                 mainAxisSpacing: Dimensions.margin10Height*7,
                               ),
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: names.length,
                           itemBuilder: (BuildContext context, int index) {
                             return 
                             GestureDetector(
                               onTap: () {
-                                Feedback.forTap(context);
-                                if (currentDevicesCount > 0){
-                                  gameDialog(names[index]);
-                                  /*setState(() {
-                                    setDuration(1);
-                                  });*/
+                                if (timers[_selectedTile].isActive == false) {
+                                  Feedback.forTap(context);
+                                
+                                  if (currentDevicesCount > 0){
+                                    gameDialog(names[index]);
+                                  }
                                 }
-                              },
+                                },
                               child: getItem(index));
                           },
                         ),
@@ -716,7 +703,7 @@ class _MainPageState extends State<MainPage> {
               ],
             )
             )
-        : Center(child: CircularProgressIndicator())
+        : const Center(child: CircularProgressIndicator())
             );
   }
 
@@ -730,6 +717,7 @@ class _MainPageState extends State<MainPage> {
             content: GameDialogContent(gameName: gameName),
             actions: [
               Row(
+                
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(

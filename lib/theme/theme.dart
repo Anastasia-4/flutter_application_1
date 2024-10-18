@@ -3,7 +3,7 @@ import 'package:flutter_application_1/utils/colors.dart';
 
 ThemeData darkMode = ThemeData(
   brightness: Brightness.dark,
-  colorScheme: ColorScheme.dark(
+  colorScheme: const ColorScheme.dark(
     surface: AppColors.darkBgColor,
     primary: AppColors.darkMainColor,
     primaryFixed: AppColors.darkMainColor,
@@ -18,7 +18,7 @@ ThemeData darkMode = ThemeData(
 
 ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
-  colorScheme: ColorScheme.light(
+  colorScheme: const ColorScheme.light(
     surface: AppColors.lightBgColor,
     primary: AppColors.lightMainColor,
     primaryFixed: AppColors.lightContainerColor,
